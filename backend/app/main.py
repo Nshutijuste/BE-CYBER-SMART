@@ -12,3 +12,4 @@ app = FastAPI (title="BE CYBER SMART")
 register_error_handlers(app)
 
 app.include_router(health.router, prefix="/api/v1")
+

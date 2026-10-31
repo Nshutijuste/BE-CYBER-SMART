@@ -44,4 +44,5 @@ def test_validation_error_does_not_echo_input():
     response = make_client().post("/items", json={"wrong": "my-password-123"})
     assert response.status_code == 422
     assert "my-password-123" not in response.text
+
     
