@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     ollama_url: str = "http://localhost:11434"
 
 
-    database_url: str = SecretStr
+    database_url: SecretStr
     jwt_signing_key: SecretStr
     hmac_secret: SecretStr
     field_encryption_key: SecretStr
@@ -24,6 +24,11 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore",
     )
+
+    @property
+    def sqlalchemy_url(self) -> str:
+        url = self.database_url.get_secret_value()
+        return url.replace("postgresql://", "postgresql+psycopg://", 1)
 
 @lru_cache()
 def get_settings() -> Settings:
