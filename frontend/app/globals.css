@@ -5,9 +5,28 @@
   --color-brand-navy: #04265b;
   --color-brand-green: #078a0f;
   --color-brand-lime: #4db814;
+  --color-calm: #0a3a8f;
+  --color-sky: #cfe0ff;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
 }
 
 @theme inline {
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-display: var(--font-montserrat), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

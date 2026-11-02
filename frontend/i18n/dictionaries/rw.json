@@ -2,11 +2,55 @@
   "meta": {
     "description": "Menya uburiganya, usuzume ubutumwa, kandi ubone ubufasha vuba. Mu Kinyarwanda no mu Cyongereza."
   },
+  "skip": "Simbuka ujye ku biri mu rupapuro",
   "header": { "language": "Ururimi" },
+  "nav": {
+    "what": "Icyo wakora",
+    "how": "Uko bikora",
+    "rule": "Ubwirinzi",
+    "menu": "Menu"
+  },
   "hero": {
     "title": "Menya uburiganya mbere y'uko bukugiraho ingaruka.",
     "body": "Shyiramo ubutumwa, link cyangwa nimero ya telefoni urebe ingano y'ibyago biteje n'impamvu. Niba hari ikintu cyamaze kugenda nabi, ubone intambwe zisobanutse mu minota mike.",
     "check": "Suzuma ubutumwa",
-    "scammed": "Ndakeka ko nariganyijwe"
-  }
+    "scammed": "Ndakeka ko nariganyijwe",
+    "chipSafe": "Biratekanye",
+    "chipRisk": "Link iteje ibyago"
+  },
+  "what": {
+    "title": "Icyo wakora hano",
+    "cards": {
+      "learn": {
+        "title": "Wige",
+        "body": "Amasomo magufi, ingero z'uburiganya n'imyitozo."
+      },
+      "help": {
+        "title": "Fata ubufasha",
+        "body": "Bwira chatbot ibyabaye ukurikize intambwe zisobanutse, izihutirwa mbere."
+      },
+      "check": {
+        "title": "Suzuma",
+        "body": "Shyiramo ubutumwa, link cyangwa nimero urebe ingano y'ibyago n'impamvu."
+      },
+      "report": {
+        "title": "Tanga raporo",
+        "body": "Bika ibimenyetso, utange raporo y'uburiganya ukurikirane ibikurikiraho."
+      }
+    }
+  },
+  "how": {
+    "title": "Uko bikora",
+    "steps": [
+      { "title": "Baza cyangwa shyiramo", "body": "Tubwire ibyabaye, cyangwa shyiramo ubutumwa." },
+      { "title": "Turasuzuma", "body": "Dukoresha amategeko na porogaramu itahura ibimenyetso by'uburiganya." },
+      { "title": "Turasobanura", "body": "Ubona ingano y'ibyago n'impamvu, atari yego cyangwa oya gusa." },
+      { "title": "Wowe ukora", "body": "Kurikiza intambwe, bika ibimenyetso kandi utange raporo." }
+    ]
+  },
+  "rule": {
+    "title": "Ntuzigere uha undi muntu ijambo ry'ibanga, PIN cyangwa kode y'inshuro imwe.",
+    "body": "Ntawe, ndetse na banki, ndetse natwe. Chatbot iraguburira nuyandika."
+  },
+  "footer": { "tagline": "Menya. Suzuma. Tanga raporo. Ugumye gutekana." }
 }

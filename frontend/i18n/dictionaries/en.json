@@ -2,11 +2,55 @@
   "meta": {
     "description": "Learn to spot scams, check messages, and get help fast. English and Kinyarwanda."
   },
+  "skip": "Skip to content",
   "header": { "language": "Language" },
+  "nav": {
+    "what": "What you can do",
+    "how": "How it works",
+    "rule": "Stay safe",
+    "menu": "Menu"
+  },
   "hero": {
     "title": "Spot the scam before it costs you.",
     "body": "Paste a message, link or phone number and see how risky it is, and why. If something already went wrong, get clear steps in minutes.",
     "check": "Check a message",
-    "scammed": "I think I was scammed"
-  }
+    "scammed": "I think I was scammed",
+    "chipSafe": "Looks safe",
+    "chipRisk": "Risky link"
+  },
+  "what": {
+    "title": "What you can do here",
+    "cards": {
+      "learn": {
+        "title": "Learn",
+        "body": "Short lessons, real scam stories and practice drills."
+      },
+      "help": {
+        "title": "Get help",
+        "body": "Tell the chatbot what happened and follow clear steps, most urgent first."
+      },
+      "check": {
+        "title": "Check",
+        "body": "Paste a message, link or number and see how risky it is, and why."
+      },
+      "report": {
+        "title": "Report",
+        "body": "Save proof, report the scam and follow what happens next."
+      }
+    }
+  },
+  "how": {
+    "title": "How it works",
+    "steps": [
+      { "title": "Ask or paste", "body": "Tell us what happened, or paste the message." },
+      { "title": "We check", "body": "Clear rules and a pattern-spotting program look for scam signs." },
+      { "title": "We explain", "body": "You get a risk level and the reasons, not just yes or no." },
+      { "title": "You act", "body": "Follow the steps, save proof and report it." }
+    ]
+  },
+  "rule": {
+    "title": "Never share your password, PIN or one-time code.",
+    "body": "Not with anyone. Not even a bank, and not even us. The chatbot warns you if you type one."
+  },
+  "footer": { "tagline": "Learn. Check. Report. Stay safe." }
 }
