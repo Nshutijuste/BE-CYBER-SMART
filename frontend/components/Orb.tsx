@@ -24,7 +24,7 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
         <span className="grid size-6 place-items-center rounded-full bg-brand-green text-white">
           ✓
         </span>
-        {safe}
+        <span>{safe}</span>
       </div>
       <div
         aria-hidden="true"
@@ -33,7 +33,7 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
         <span className="grid size-6 place-items-center rounded-full bg-amber-400 text-brand-navy">
           !
         </span>
-        {risky}
+        <span>{risky}</span>
       </div>
     </div>
   );

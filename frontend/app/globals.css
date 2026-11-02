@@ -30,3 +30,9 @@
     scroll-behavior: smooth;
   }
 }
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 93.75%;
+  }
+}
