@@ -22,7 +22,7 @@ export default async function Header() {
           <Logo size={36} onDark />
         </a>
 
-        <nav aria-label={t.nav.menu} className="hidden items-center gap-8 md:flex">
+        <nav aria-label={t.nav.menu} className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -35,8 +35,15 @@ export default async function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <LanguageSwitch current={locale} label={t.header.language} onDark />
-          <MobileMenu links={links} label={t.nav.menu} />
+          <div className="hidden lg:block">
+            <LanguageSwitch current={locale} label={t.header.language} onDark />
+          </div>
+          <MobileMenu
+            links={links}
+            label={t.nav.menu}
+            locale={locale}
+            languageLabel={t.header.language}
+          />
         </div>
       </div>
     </header>

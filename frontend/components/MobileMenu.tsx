@@ -1,15 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import LanguageSwitch from "@/components/LanguageSwitch";
+import type { Locale } from "@/i18n/config";
 
 type NavLink = { href: string; label: string };
 
 export default function MobileMenu({
   links,
   label,
+  locale,
+  languageLabel,
 }: {
   links: NavLink[];
   label: string;
+  locale: Locale;
+  languageLabel: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -23,7 +29,7 @@ export default function MobileMenu({
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-expanded={open}
@@ -34,25 +40,30 @@ export default function MobileMenu({
         {label}
       </button>
       {open && (
-        <nav
+        <div
           id="mobile-menu"
-          aria-label={label}
           className="absolute inset-x-4 top-full z-20 mt-1 rounded-2xl bg-white p-3 shadow-xl"
         >
-          <ul>
-            {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-lg px-4 py-3 text-lg font-semibold text-brand-navy hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-brand-blue"
-                >
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <nav aria-label={label}>
+            <ul>
+              {links.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-lg px-4 py-3 text-lg font-semibold text-brand-navy hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-brand-blue"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="mt-2 border-t border-slate-200 px-4 pb-2 pt-4">
+            <p className="mb-2 text-sm font-semibold text-slate-600">{languageLabel}</p>
+            <LanguageSwitch current={locale} label={languageLabel} />
+          </div>
+        </div>
       )}
     </div>
   );

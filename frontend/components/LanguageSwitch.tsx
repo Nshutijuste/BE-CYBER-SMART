@@ -2,10 +2,15 @@
 
 import { useTransition } from "react";
 import { setLocale } from "@/app/actions";
+import Flag from "@/components/Flag";
 import { locales, type Locale } from "@/i18n/config";
 
-const short: Record<Locale, string> = { en: "EN", rw: "RW" };
-const full: Record<Locale, string> = { en: "English", rw: "Kinyarwanda" };
+const short: Record<Locale, string> = { en: "EN", rw: "RW", fr: "FR" };
+const full: Record<Locale, string> = {
+  en: "English",
+  rw: "Kinyarwanda",
+  fr: "Français",
+};
 
 export default function LanguageSwitch({
   current,
@@ -35,7 +40,9 @@ export default function LanguageSwitch({
           : active
             ? "bg-brand-navy text-white"
             : "text-brand-navy hover:bg-brand-navy/10";
-        const ring = onDark ? "focus-visible:outline-brand-lime" : "focus-visible:outline-brand-blue";
+        const ring = onDark
+          ? "focus-visible:outline-brand-lime"
+          : "focus-visible:outline-brand-blue";
         return (
           <button
             key={l}
@@ -49,9 +56,11 @@ export default function LanguageSwitch({
                 await setLocale(l);
               })
             }
-            className={`px-3.5 py-2 focus-visible:outline-2 focus-visible:-outline-offset-2 ${ring} ${tone}`}
+            className={`inline-flex items-center gap-2 px-3 py-2 focus-visible:outline-2 focus-visible:-outline-offset-2 ${ring} ${tone}`}
           >
-            {short[l]}
+            <Flag locale={l} />
+            <span aria-hidden="true">{short[l]}</span>
+            <span className="sr-only">{full[l]}</span>
           </button>
         );
       })}

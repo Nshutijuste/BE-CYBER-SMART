@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "description": "Apprenez à repérer les arnaques, vérifiez des messages et obtenez de l'aide rapidement. En kinyarwanda, en anglais et en français."
+  },
+  "skip": "Aller au contenu",
+  "header": { "language": "Langue" },
+  "nav": {
+    "what": "Services",
+    "how": "Comment ça marche",
+    "rule": "Sécurité",
+    "menu": "Menu"
+  },
+  "hero": {
+    "title": "Repérez l'arnaque avant qu'elle ne vous coûte cher.",
+    "body": "Collez un message, un lien ou un numéro de téléphone et voyez à quel point il est risqué, et pourquoi. Si quelque chose s'est déjà mal passé, obtenez des étapes claires en quelques minutes.",
+    "check": "Vérifier un message",
+    "scammed": "Je pense avoir été victime d'une arnaque",
+    "chipSafe": "Semble sûr",
+    "chipRisk": "Lien risqué"
+  },
+  "what": {
+    "title": "Ce que vous pouvez faire ici",
+    "cards": {
+      "learn": {
+        "title": "Apprendre",
+        "body": "Des leçons courtes, de vrais exemples d'arnaques et des exercices pratiques."
+      },
+      "help": {
+        "title": "Obtenir de l'aide",
+        "body": "Dites au chatbot ce qui s'est passé et suivez des étapes claires, les plus urgentes d'abord."
+      },
+      "check": {
+        "title": "Vérifier",
+        "body": "Collez un message, un lien ou un numéro et voyez son niveau de risque, et pourquoi."
+      },
+      "report": {
+        "title": "Signaler",
+        "body": "Gardez des preuves, signalez l'arnaque et suivez la suite."
+      }
+    }
+  },
+  "how": {
+    "title": "Comment ça marche",
+    "steps": [
+      { "title": "Demandez ou collez", "body": "Dites-nous ce qui s'est passé, ou collez le message." },
+      { "title": "Nous vérifions", "body": "Des règles claires et un programme qui repère les schémas cherchent les signes d'arnaque." },
+      { "title": "Nous expliquons", "body": "Vous obtenez un niveau de risque et les raisons, pas seulement oui ou non." },
+      { "title": "Vous agissez", "body": "Suivez les étapes, gardez des preuves et signalez." }
+    ]
+  },
+  "rule": {
+    "title": "Ne partagez jamais votre mot de passe, votre code PIN ou un code à usage unique.",
+    "body": "Avec personne. Pas même avec une banque, ni avec nous. Le chatbot vous avertit si vous en tapez un."
+  },
+  "footer": { "tagline": "Apprenez. Vérifiez. Signalez. Restez en sécurité." }
+}
