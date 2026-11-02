@@ -3,7 +3,7 @@
     "description": "Apprenez à repérer les arnaques, vérifiez des messages et obtenez de l'aide rapidement. En kinyarwanda, en anglais et en français."
   },
   "skip": "Aller au contenu",
-  "header": { "language": "Langue" },
+    "header": { "changeLanguage": "Changer de langue" },
   "nav": {
     "what": "Services",
     "how": "Comment ça marche",

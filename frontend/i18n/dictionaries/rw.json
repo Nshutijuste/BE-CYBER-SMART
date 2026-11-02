@@ -3,7 +3,7 @@
     "description": "Menya uburiganya, usuzume ubutumwa, kandi ubone ubufasha vuba. Mu Kinyarwanda no mu Cyongereza."
   },
   "skip": "Simbuka ujye ku biri mu rupapuro",
-  "header": { "language": "Ururimi" },
+    "header": { "changeLanguage": "Hindura ururimi" },
   "nav": {
     "what": "Icyo wakora",
     "how": "Uko bikora",

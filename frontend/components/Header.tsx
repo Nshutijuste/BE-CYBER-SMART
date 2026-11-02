@@ -1,7 +1,8 @@
-import LanguageSwitch from "@/components/LanguageSwitch";
+import LanguageMenu from "@/components/LanguageMenu";
 import Logo from "@/components/Logo";
 import MobileMenu from "@/components/MobileMenu";
 import { getDictionary } from "@/i18n/server";
+import Link from "next/link";
 
 export default async function Header() {
   const { locale, t } = await getDictionary();
@@ -13,14 +14,14 @@ export default async function Header() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-20">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5">
-        <a
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-5 sm:px-6">
+        <Link
           href="/"
           aria-label="Be Cyber Smart"
           className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-lime"
         >
           <Logo size={36} onDark />
-        </a>
+        </Link>
 
         <nav aria-label={t.nav.menu} className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
@@ -34,16 +35,9 @@ export default async function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden lg:block">
-            <LanguageSwitch current={locale} label={t.header.language} onDark />
-          </div>
-          <MobileMenu
-            links={links}
-            label={t.nav.menu}
-            locale={locale}
-            languageLabel={t.header.language}
-          />
+        <div className="flex items-center gap-2 sm:gap-3">
+          <LanguageMenu current={locale} label={t.header.changeLanguage} />
+          <MobileMenu links={links} label={t.nav.menu} />
         </div>
       </div>
     </header>

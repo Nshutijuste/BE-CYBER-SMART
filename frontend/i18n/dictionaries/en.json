@@ -3,7 +3,7 @@
     "description": "Learn to spot scams, check messages, and get help fast. English and Kinyarwanda."
   },
   "skip": "Skip to content",
-  "header": { "language": "Language" },
+    "header": { "changeLanguage": "Change language" },
   "nav": {
     "what": "What you can do",
     "how": "How it works",

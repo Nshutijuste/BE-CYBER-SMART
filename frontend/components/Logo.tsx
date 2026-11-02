@@ -19,7 +19,7 @@ export default function Logo({
           priority
         />
       </span>
-      <span className="font-display text-2xl font-extrabold leading-none tracking-tight">
+      <span className="font-display text-xl sm:text-2xl font-extrabold leading-none tracking-tight">
         <span
           className={`mr-0.5 align-top text-sm font-extrabold italic ${
             onDark ? "text-brand-lime" : "text-brand-green"
