@@ -30,6 +30,6 @@ class Settings(BaseSettings):
         url = self.database_url.get_secret_value()
         return url.replace("postgresql://", "postgresql+psycopg://", 1)
 
-@lru_cache()
+@lru_cache
 def get_settings() -> Settings:
     return Settings()
