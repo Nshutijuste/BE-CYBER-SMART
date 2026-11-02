@@ -1,0 +1,1 @@
+extend-exclude = ["app/db/migrations/versions"]
