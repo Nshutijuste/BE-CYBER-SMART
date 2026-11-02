@@ -1,32 +1,34 @@
 import Image from "next/image";
+import { getDictionary } from "@/i18n/server";
 
 const focus =
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue";
 
-export default function Hero() {
+export default async function Hero() {
+  const { t } = await getDictionary();
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 to-white">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 pb-44 pt-10 md:grid-cols-2 md:pb-60 md:pt-16">
         <div>
           <h1 className="font-display text-4xl font-extrabold leading-tight text-brand-navy md:text-5xl">
-            Spot the scam before it costs you.
+            {t.hero.title}
           </h1>
           <p className="mt-5 max-w-md text-lg text-slate-700">
-            Paste a message, link or phone number and see how risky it is, and
-            why. If something already went wrong, get clear steps in minutes.
+            {t.hero.body}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#"
               className={`rounded-lg bg-brand-blue px-6 py-3 font-semibold text-white hover:bg-brand-navy ${focus}`}
             >
-              Check a message
+              {t.hero.check}
             </a>
             <a
               href="#"
               className={`rounded-lg border-2 border-brand-navy px-6 py-3 font-semibold text-brand-navy hover:bg-brand-navy hover:text-white ${focus}`}
             >
-              I think I was scammed
+              {t.hero.scammed}
             </a>
           </div>
         </div>

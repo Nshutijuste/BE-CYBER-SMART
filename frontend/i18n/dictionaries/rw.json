@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "description": "Menya uburiganya, usuzume ubutumwa, kandi ubone ubufasha vuba. Mu Kinyarwanda no mu Cyongereza."
+  },
+  "header": { "language": "Ururimi" },
+  "hero": {
+    "title": "Menya uburiganya mbere y'uko bukugiraho ingaruka.",
+    "body": "Shyiramo ubutumwa, link cyangwa nimero ya telefoni urebe ingano y'ibyago biteje n'impamvu. Niba hari ikintu cyamaze kugenda nabi, ubone intambwe zisobanutse mu minota mike.",
+    "check": "Suzuma ubutumwa",
+    "scammed": "Ndakeka ko nariganyijwe"
+  }
+}
