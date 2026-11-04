@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     frontend_origin: str = "http://localhost:3000"
     ollama_url: str = "http://localhost:11434"
-
+    
 
     database_url: SecretStr
     jwt_signing_key: SecretStr
