@@ -21,3 +21,7 @@ pgdata/
 # Editor and OS
 .vscode/
 .DS_Store
+
+coverage.xml
+.coverage
+htmlcov/
