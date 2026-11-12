@@ -25,6 +25,12 @@ class NotFoundError(AppError):
     code = "not_found"
     message = "Not found."
 
+    
+class ConflictError(AppError):
+    status_code = 409
+    code = "account_unavailable"
+    message = "These details cannot be used to register."
+
 
 def _body(code: str, message: str) -> dict:
     return {"error": {"code": code, "message": message}}
