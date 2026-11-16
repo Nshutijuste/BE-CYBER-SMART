@@ -17,6 +17,7 @@ def session():
         db.add(Role(name="subscriber"))
         db.commit()
         yield db
+    engine.dispose()
 
 
 def test_add_saves_a_user_with_the_right_role(session):

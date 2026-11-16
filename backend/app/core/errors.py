@@ -32,6 +32,12 @@ class ConflictError(AppError):
     message = "These details cannot be used to register."
 
 
+class AuthenticationError(AppError):
+    status_code = 401
+    code = "invalid_credentials"
+    message = "Incorrect details. Please try again."
+
+
 def _body(code: str, message: str) -> dict:
     return {"error": {"code": code, "message": message}}
 

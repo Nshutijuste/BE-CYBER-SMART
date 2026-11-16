@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.core.errors import ConflictError
 from app.db.models import Role, User
+from app.domain.entities import UserCredentials
 
 
 class SqlUserRepository:
@@ -49,3 +50,20 @@ class SqlUserRepository:
             self._session.rollback()
             raise ConflictError() from None
         return user_id
+
+    def find_for_login(
+        self, *, email: str | None, phone: str | None
+    ) -> UserCredentials | None:
+        query = select(User.id, User.password_hash, User.is_active)
+        if email is not None:
+            query = query.where(User.email == email)
+        elif phone is not None:
+            query = query.where(User.phone == phone)
+        else:
+            return None
+        row = self._session.execute(query).first()
+        if row is None:
+            return None
+        return UserCredentials(
+            id=row.id, password_hash=row.password_hash, is_active=row.is_active
+        )

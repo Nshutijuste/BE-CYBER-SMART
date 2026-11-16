@@ -35,3 +35,7 @@ def test_weaker_old_hash_needs_rehash():
     hasher = Argon2PasswordHasher()
     assert hasher.needs_rehash(weak) is True
     assert hasher.needs_rehash(hasher.hash("x")) is False
+
+
+def test_verify_dummy_runs_without_error_and_returns_nothing():
+    assert Argon2PasswordHasher().verify_dummy("any password at all") is None
