@@ -1,3 +1,4 @@
+import uuid
 from typing import Self
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, SecretStr, model_validator
@@ -15,3 +16,7 @@ class RegisterRequest(BaseModel):
         if self.email is None and self.phone is None:
             raise ValueError("email or phone is required")
         return self
+
+
+class RegisterResponse(BaseModel):
+    id: uuid.UUID

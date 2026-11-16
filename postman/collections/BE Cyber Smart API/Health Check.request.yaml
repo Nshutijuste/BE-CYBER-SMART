@@ -1,0 +1,7 @@
+$kind: http-request
+name: Health Check
+method: GET
+url: '{{baseUrl}}/v1/health'
+order: 1000
+description: Checks whether the BE Cyber Smart API is available and healthy.
+examples: './.resources/Health Check.resources/examples'

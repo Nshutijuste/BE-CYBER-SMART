@@ -1,0 +1,6 @@
+$kind: collection
+name: BE Cyber Smart API
+variables:
+  - key: baseUrl
+    value: 'http://localhost:3000'
+    description: Base URL for the BE Cyber Smart API.
