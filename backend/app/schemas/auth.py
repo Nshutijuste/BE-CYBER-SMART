@@ -1,7 +1,9 @@
 import uuid
-from typing import Self
+from typing import Literal, Self
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, SecretStr, model_validator
+
+CODE_PATTERN = r"^\d{6}$"
 
 
 class RegisterRequest(BaseModel):
@@ -37,6 +39,34 @@ class LoginRequest(BaseModel):
 
 
 class LoginResponse(BaseModel):
-    """Temporary: the next brick replaces this with access and refresh tokens."""
+    status: Literal["ok", "mfa_required"]
+    mfa_token: str | None = None
 
+
+class MfaLoginRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    mfa_token: str = Field(min_length=1, max_length=2000)
+    code: str = Field(pattern=CODE_PATTERN)
+
+
+class MfaCodeRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    code: str = Field(pattern=CODE_PATTERN)
+
+
+class MfaSetupResponse(BaseModel):
+    secret: str
+    otpauth_uri: str
+
+
+class StatusResponse(BaseModel):
+    status: Literal["ok"] = "ok"
+
+
+class MeResponse(BaseModel):
     id: uuid.UUID
+    role: str
+    permissions: list[str]
+    mfa_verified: bool

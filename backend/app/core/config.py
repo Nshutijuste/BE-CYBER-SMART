@@ -6,13 +6,16 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ENV_FILE = Path(__file__).resolve().parents[3] / ".env"
 
+# In these environments cookies may travel over plain http (local work and tests).
+PLAIN_HTTP_ENVS = {"development", "test"}
+
 
 class Settings(BaseSettings):
-    """Application settings."""
     app_env: str = "development"
     frontend_origin: str = "http://localhost:3000"
     ollama_url: str = "http://localhost:11434"
-    
+    access_token_minutes: int = 15
+    refresh_token_days: int = 14
 
     database_url: SecretStr
     jwt_signing_key: SecretStr
@@ -29,6 +32,11 @@ class Settings(BaseSettings):
     def sqlalchemy_url(self) -> str:
         url = self.database_url.get_secret_value()
         return url.replace("postgresql://", "postgresql+psycopg://", 1)
+
+    @property
+    def cookies_secure(self) -> bool:
+        return self.app_env not in PLAIN_HTTP_ENVS
+
 
 @lru_cache
 def get_settings() -> Settings:

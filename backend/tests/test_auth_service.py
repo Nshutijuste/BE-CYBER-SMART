@@ -1,50 +1,59 @@
 import pytest
 from pydantic import ValidationError
 
-from app.core.errors import ConflictError
+from app.core.errors import ConflictError, WeakPasswordError
 from app.core.security import Argon2PasswordHasher
 from app.schemas.auth import RegisterRequest
 from app.services.auth_service import AuthService
-from tests.fakes import FakePasswordHasher, FakeUserRepository
+from tests.fakes import FakeBreachChecker, FakePasswordHasher, FakeUserRepository
 
 GOOD_PASSWORD = "a long enough passphrase"
 
 
-def make_service() -> tuple[AuthService, FakeUserRepository]:
+def make_service(breached: set[str] | None = None):
     users = FakeUserRepository()
-    return AuthService(users, FakePasswordHasher()), users
+    breach = FakeBreachChecker(breached)
+    return AuthService(users, FakePasswordHasher(), breach), users, breach
 
 
 def test_register_stores_a_hash_and_the_subscriber_role():
-    service, users = make_service()
+    service, users, _ = make_service()
     service.register(RegisterRequest(email="Ann@Example.com", password=GOOD_PASSWORD))
     row = users.rows[0]
     assert row["role"] == "subscriber"
-    assert row["password_hash"] == f"hashed:{GOOD_PASSWORD}"  # went through the hasher
+    assert row["password_hash"] == f"hashed:{GOOD_PASSWORD}"
 
 
 def test_email_is_stored_in_lowercase():
-    service, users = make_service()
+    service, users, _ = make_service()
     service.register(RegisterRequest(email="Ann@Example.com", password=GOOD_PASSWORD))
     assert users.rows[0]["email"] == "ann@example.com"
 
 
 def test_real_hasher_produces_an_argon2id_hash():
     users = FakeUserRepository()
-    service = AuthService(users, Argon2PasswordHasher())
+    service = AuthService(users, Argon2PasswordHasher(), FakeBreachChecker())
     service.register(RegisterRequest(phone="+250781000000", password=GOOD_PASSWORD))
     assert users.rows[0]["password_hash"].startswith("$argon2id$")
 
 
+def test_a_password_found_in_a_leak_is_refused_and_nothing_is_saved():
+    service, users, breach = make_service(breached={GOOD_PASSWORD})
+    with pytest.raises(WeakPasswordError):
+        service.register(RegisterRequest(email="ann@example.com", password=GOOD_PASSWORD))
+    assert users.rows == []
+    assert breach.asked == [GOOD_PASSWORD]
+
+
 def test_taken_email_is_refused_even_with_different_case():
-    service, _ = make_service()
+    service, _, _ = make_service()
     service.register(RegisterRequest(email="ann@example.com", password=GOOD_PASSWORD))
     with pytest.raises(ConflictError):
         service.register(RegisterRequest(email="ANN@example.com", password=GOOD_PASSWORD))
 
 
 def test_taken_phone_is_refused():
-    service, _ = make_service()
+    service, _, _ = make_service()
     service.register(RegisterRequest(phone="+250781000000", password=GOOD_PASSWORD))
     with pytest.raises(ConflictError):
         service.register(RegisterRequest(phone="+250781000000", password=GOOD_PASSWORD))

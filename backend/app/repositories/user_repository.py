@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.core.errors import ConflictError
 from app.db.models import Role, User
-from app.domain.entities import UserCredentials
+from app.domain.entities import UserCredentials, UserProfile
 
 
 class SqlUserRepository:
@@ -67,3 +67,13 @@ class SqlUserRepository:
         return UserCredentials(
             id=row.id, password_hash=row.password_hash, is_active=row.is_active
         )
+
+    def find_by_id(self, user_id: uuid.UUID) -> UserProfile | None:
+        row = self._session.execute(
+            select(User.id, Role.name, User.is_active)
+            .join(Role, Role.id == User.role_id)
+            .where(User.id == user_id)
+        ).first()
+        if row is None:
+            return None
+        return UserProfile(id=row.id, role=row.name, is_active=row.is_active)

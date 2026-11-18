@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from pydantic import BaseModel
 
-from app.core.errors import NotFoundError, register_error_handlers
+from app.core.errors import NotFoundError, TooManyAttemptsError, register_error_handlers
 
 
 class Item(BaseModel):
@@ -16,6 +16,10 @@ def make_client() -> TestClient:
     @app.get("/missing")
     def missing():
         raise NotFoundError()
+
+    @app.get("/slow")
+    def slow():
+        raise TooManyAttemptsError(42)
 
     @app.get("/boom")
     def boom():
@@ -34,6 +38,12 @@ def test_app_error_returns_clean_json():
     assert response.json() == {"error": {"code": "not_found", "message": "Not found."}}
 
 
+def test_too_many_attempts_says_how_long_to_wait():
+    response = make_client().get("/slow")
+    assert response.status_code == 429
+    assert response.headers["retry-after"] == "42"
+
+
 def test_unexpected_error_hides_details():
     response = make_client().get("/boom")
     assert response.status_code == 500
@@ -44,5 +54,3 @@ def test_validation_error_does_not_echo_input():
     response = make_client().post("/items", json={"wrong": "my-password-123"})
     assert response.status_code == 422
     assert "my-password-123" not in response.text
-
-    

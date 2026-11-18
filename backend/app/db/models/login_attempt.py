@@ -12,6 +12,7 @@ class LoginAttempt(Base):
     __table_args__ = (
         Index("ix_login_attempts_user_time", "user_id", "attempted_at"),
         Index("ix_login_attempts_ip_time", "source_ip", "attempted_at"),
+        Index("ix_login_attempts_identifier_time", "identifier_hash", "attempted_at"),
     )
 
     id: Mapped[int] = mapped_column(
@@ -21,6 +22,7 @@ class LoginAttempt(Base):
         DateTime(timezone=True), server_default=func.now()
     )
     user_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    identifier_hash: Mapped[str | None] = mapped_column(String(64))
     source_ip: Mapped[str] = mapped_column(String(45))
     device_summary: Mapped[str | None] = mapped_column(String(200))
     success: Mapped[bool]
