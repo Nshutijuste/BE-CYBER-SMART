@@ -1,8 +1,8 @@
 """Live check of Week 3 against your real database.
 
 Run from backend/ with (.venv) active and the Docker database up:
-    Linux / Git Bash:  PYTHONPATH=. python scripts/smoke_week3.py
-    PowerShell:        $env:PYTHONPATH="."; python scripts/smoke_week3.py
+    Linux / Git Bash:  PYTHONPATH=. python scripts/verify_auth_flow.py
+    PowerShell:        $env:PYTHONPATH="."; python scripts/verify_auth_flow.py
 
 It creates throw-away test users (smoke...@example.com) in your DEVELOPMENT database.
 """
