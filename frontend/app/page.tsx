@@ -1,3 +1,4 @@
+import ApiStatus from "@/components/ApiStatus";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import GoldenRule from "@/components/GoldenRule";
@@ -28,6 +29,7 @@ export default async function Home() {
         <HowItWorks />
         <GoldenRule />
       </main>
+      <ApiStatus />
       <Footer />
     </>
   );
