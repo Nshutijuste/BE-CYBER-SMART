@@ -6,6 +6,7 @@ from app.domain.entities import (
     FailureWindow,
     MfaState,
     RefreshTokenRecord,
+    RefreshTokenRotationResult,
     UserCredentials,
     UserProfile,
 )
@@ -95,7 +96,14 @@ class RefreshTokenRepository(Protocol):
 
     def get_by_hash(self, token_hash: str) -> RefreshTokenRecord | None: ...
 
-    def revoke(self, token_id: uuid.UUID, at: datetime) -> None: ...
+    def rotate(
+        self,
+        *,
+        token_hash: str,
+        replacement_hash: str,
+        at: datetime,
+        replacement_expires_at: datetime,
+    ) -> RefreshTokenRotationResult: ...
 
     def revoke_family(self, family_id: uuid.UUID, at: datetime) -> None: ...
 
@@ -105,9 +113,9 @@ class MfaRepository(Protocol):
 
     def save_pending(self, user_id: uuid.UUID, secret_encrypted: str, at: datetime) -> None: ...
 
-    def activate(self, user_id: uuid.UUID, last_step: int) -> None: ...
+    def activate(self, user_id: uuid.UUID, last_step: int) -> bool: ...
 
-    def record_step(self, user_id: uuid.UUID, last_step: int) -> None: ...
+    def record_step(self, user_id: uuid.UUID, last_step: int) -> bool: ...
 
 
 class DeviceRepository(Protocol):

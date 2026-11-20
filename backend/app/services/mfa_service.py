@@ -53,15 +53,25 @@ class MfaService:
         state = self._mfa.get(user_id)
         if state is None or state.enabled:
             raise AuthenticationError()
-        step = self._check(user_id, state.secret_encrypted, state.last_step, code, source_ip)
-        self._mfa.activate(user_id, step)
+        step, key, now = self._check(
+            user_id, state.secret_encrypted, state.last_step, code, source_ip
+        )
+        if not self._mfa.activate(user_id, step):
+            self._record(user_id, key, source_ip, MFA_FAILED, now)
+            raise AuthenticationError()
+        self._record(user_id, key, source_ip, None, now)
 
     def verify_login_code(self, user_id: uuid.UUID, code: str, *, source_ip: str) -> None:
         state = self._mfa.get(user_id)
         if state is None or not state.enabled:
             raise AuthenticationError()
-        step = self._check(user_id, state.secret_encrypted, state.last_step, code, source_ip)
-        self._mfa.record_step(user_id, step)
+        step, key, now = self._check(
+            user_id, state.secret_encrypted, state.last_step, code, source_ip
+        )
+        if not self._mfa.record_step(user_id, step):
+            self._record(user_id, key, source_ip, MFA_FAILED, now)
+            raise AuthenticationError()
+        self._record(user_id, key, source_ip, None, now)
 
     def _check(
         self,
@@ -70,7 +80,7 @@ class MfaService:
         last_step: int,
         code: str,
         source_ip: str,
-    ) -> int:
+    ) -> tuple[int, str, datetime]:
         now = self._clock()
         key = self._keyed_hash(f"mfa:{user_id}")
         wait = self._throttle.wait_seconds(key_hash=key, source_ip=source_ip, now=now)
@@ -83,8 +93,7 @@ class MfaService:
         if step is None:
             self._record(user_id, key, source_ip, MFA_FAILED, now)
             raise AuthenticationError()
-        self._record(user_id, key, source_ip, None, now)
-        return step
+        return step, key, now
 
     def _record(
         self,

@@ -86,6 +86,32 @@ def test_a_spent_token_that_comes_back_ends_the_whole_family(world):
         service.rotate(second.refresh_token)  # the new one is dead too
 
 
+def test_a_replay_detected_during_atomic_rotation_ends_the_family(world, monkeypatch):
+    service, _, refresh, *_, user_id = world
+    first = start(service, user_id)
+    rotate = refresh.rotate
+
+    def competing_rotation(**kwargs):
+        winner = rotate(
+            **{
+                **kwargs,
+                "replacement_hash": "concurrent-successor-hash",
+            }
+        )
+        assert winner.record is not None
+        return rotate(
+            **{
+                **kwargs,
+                "replacement_hash": "replayed-successor-hash",
+            }
+        )
+
+    monkeypatch.setattr(refresh, "rotate", competing_rotation)
+    with pytest.raises(InvalidSessionError):
+        service.rotate(first.refresh_token)
+    assert refresh.active_count() == 0
+
+
 def test_an_unknown_token_is_refused(world):
     service, *_ = world
     with pytest.raises(InvalidSessionError):

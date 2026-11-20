@@ -7,6 +7,7 @@ from app.domain.entities import (
     FailureWindow,
     MfaState,
     RefreshTokenRecord,
+    RefreshTokenRotationResult,
     UserCredentials,
     UserProfile,
 )
@@ -166,19 +167,36 @@ class FakeRefreshTokenRepository:
     def get_by_hash(self, token_hash: str) -> RefreshTokenRecord | None:
         for row in self.rows.values():
             if row["token_hash"] == token_hash:
-                return RefreshTokenRecord(
-                    id=row["id"],
-                    user_id=row["user_id"],
-                    family_id=row["family_id"],
-                    mfa_passed=row["mfa_passed"],
-                    expires_at=row["expires_at"],
-                    revoked_at=row["revoked_at"],
-                )
+                return self._record(row)
         return None
 
-    def revoke(self, token_id: uuid.UUID, at: datetime) -> None:
-        if self.rows[token_id]["revoked_at"] is None:
-            self.rows[token_id]["revoked_at"] = at
+    def rotate(
+        self,
+        *,
+        token_hash: str,
+        replacement_hash: str,
+        at: datetime,
+        replacement_expires_at: datetime,
+    ) -> RefreshTokenRotationResult:
+        record = self.get_by_hash(token_hash)
+        if record is None:
+            return RefreshTokenRotationResult(record=None, replayed=False)
+        if record.revoked_at is not None:
+            self.revoke_family(record.family_id, at)
+            return RefreshTokenRotationResult(record=record, replayed=True)
+        if record.expires_at <= at:
+            return RefreshTokenRotationResult(record=None, replayed=False)
+
+        self.rows[record.id]["revoked_at"] = at
+        self.add(
+            user_id=record.user_id,
+            family_id=record.family_id,
+            token_hash=replacement_hash,
+            mfa_passed=record.mfa_passed,
+            created_at=at,
+            expires_at=replacement_expires_at,
+        )
+        return RefreshTokenRotationResult(record=record, replayed=False)
 
     def revoke_family(self, family_id: uuid.UUID, at: datetime) -> None:
         for row in self.rows.values():
@@ -188,10 +206,23 @@ class FakeRefreshTokenRepository:
     def active_count(self) -> int:
         return sum(1 for r in self.rows.values() if r["revoked_at"] is None)
 
+    @staticmethod
+    def _record(row: dict[str, Any]) -> RefreshTokenRecord:
+        return RefreshTokenRecord(
+            id=row["id"],
+            user_id=row["user_id"],
+            family_id=row["family_id"],
+            mfa_passed=row["mfa_passed"],
+            expires_at=row["expires_at"],
+            revoked_at=row["revoked_at"],
+        )
+
 
 class FakeMfaRepository:
     def __init__(self) -> None:
         self.rows: dict[uuid.UUID, dict[str, Any]] = {}
+        self.reject_next_step = False
+        self.reject_next_activation = False
 
     def get(self, user_id: uuid.UUID) -> MfaState | None:
         row = self.rows.get(user_id)
@@ -210,12 +241,26 @@ class FakeMfaRepository:
             "last_step": 0,
         }
 
-    def activate(self, user_id: uuid.UUID, last_step: int) -> None:
-        self.rows[user_id]["enabled"] = True
-        self.rows[user_id]["last_step"] = last_step
+    def activate(self, user_id: uuid.UUID, last_step: int) -> bool:
+        if self.reject_next_activation:
+            self.reject_next_activation = False
+            return False
+        row = self.rows[user_id]
+        if row["enabled"] or row["last_step"] >= last_step:
+            return False
+        row["enabled"] = True
+        row["last_step"] = last_step
+        return True
 
-    def record_step(self, user_id: uuid.UUID, last_step: int) -> None:
-        self.rows[user_id]["last_step"] = last_step
+    def record_step(self, user_id: uuid.UUID, last_step: int) -> bool:
+        if self.reject_next_step:
+            self.reject_next_step = False
+            return False
+        row = self.rows[user_id]
+        if not row["enabled"] or row["last_step"] >= last_step:
+            return False
+        row["last_step"] = last_step
+        return True
 
 
 class FakeDeviceRepository:

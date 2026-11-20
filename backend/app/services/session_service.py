@@ -87,8 +87,23 @@ class SessionService:
             self._refresh.revoke_family(record.family_id, now)
             raise InvalidSessionError()
 
-        self._refresh.revoke(record.id, now)
-        return self._issue(record.user_id, record.family_id, record.mfa_passed, now)
+        replacement = secrets.token_urlsafe(48)
+        rotation = self._refresh.rotate(
+            token_hash=hash_refresh_token(raw_refresh_token),
+            replacement_hash=hash_refresh_token(replacement),
+            at=now,
+            replacement_expires_at=now + self._refresh_lifetime,
+        )
+        if rotation.record is None:
+            raise InvalidSessionError()
+        if rotation.replayed:
+            logger.warning("refresh_token_reuse family=%s", rotation.record.family_id)
+            raise InvalidSessionError()
+        return self._issued(
+            rotation.record.user_id,
+            rotation.record.mfa_passed,
+            replacement,
+        )
 
     def end(self, raw_refresh_token: str) -> None:
         record = self._refresh.get_by_hash(hash_refresh_token(raw_refresh_token))
@@ -107,6 +122,9 @@ class SessionService:
             created_at=now,
             expires_at=now + self._refresh_lifetime,
         )
+        return self._issued(user_id, mfa_passed, raw)
+
+    def _issued(self, user_id: uuid.UUID, mfa_passed: bool, raw: str) -> IssuedSession:
         return IssuedSession(
             access_token=self._tokens.issue_access(user_id, mfa=mfa_passed),
             refresh_token=raw,

@@ -81,6 +81,30 @@ def test_a_login_code_works_once_and_the_next_period_works_again(world):
     service.verify_login_code(user_id, good_code(secret, clock), source_ip=IP)
 
 
+def test_a_step_rejected_by_the_atomic_claim_is_not_accepted(world):
+    service, mfa, attempts, clock, user_id = world
+    secret = enable(service, clock, user_id)
+    clock.advance(seconds=30)
+    mfa.reject_next_step = True
+
+    with pytest.raises(AuthenticationError):
+        service.verify_login_code(user_id, good_code(secret, clock), source_ip=IP)
+
+    assert attempts.rows[-1]["failure_reason"] == "mfa_failed"
+
+
+def test_a_setup_confirmation_losing_the_atomic_claim_is_rejected(world):
+    service, mfa, attempts, clock, user_id = world
+    setup = service.begin_setup(user_id, "ann@example.com")
+    mfa.reject_next_activation = True
+
+    with pytest.raises(AuthenticationError):
+        service.confirm_setup(user_id, good_code(setup.secret, clock), source_ip=IP)
+
+    assert attempts.rows[-1]["failure_reason"] == "mfa_failed"
+    assert mfa.rows[user_id]["enabled"] is False
+
+
 def test_wrong_codes_are_recorded_and_lock_out_guessing(world):
     service, _, attempts, clock, user_id = world
     secret = enable(service, clock, user_id)

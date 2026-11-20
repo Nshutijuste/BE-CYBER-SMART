@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 
+from sqlalchemy import update
 from sqlalchemy.orm import Session
 
 from app.db.models import MfaCredential
@@ -37,15 +38,28 @@ class SqlMfaRepository:
             row.last_step = 0
         self._session.commit()
 
-    def activate(self, user_id: uuid.UUID, last_step: int) -> None:
-        row = self._session.get(MfaCredential, user_id)
-        if row is not None:
-            row.enabled = True
-            row.last_step = last_step
-            self._session.commit()
+    def activate(self, user_id: uuid.UUID, last_step: int) -> bool:
+        result = self._session.execute(
+            update(MfaCredential)
+            .where(
+                MfaCredential.user_id == user_id,
+                MfaCredential.enabled.is_(False),
+                MfaCredential.last_step < last_step,
+            )
+            .values(enabled=True, last_step=last_step)
+        )
+        self._session.commit()
+        return result.rowcount == 1
 
-    def record_step(self, user_id: uuid.UUID, last_step: int) -> None:
-        row = self._session.get(MfaCredential, user_id)
-        if row is not None:
-            row.last_step = last_step
-            self._session.commit()
+    def record_step(self, user_id: uuid.UUID, last_step: int) -> bool:
+        result = self._session.execute(
+            update(MfaCredential)
+            .where(
+                MfaCredential.user_id == user_id,
+                MfaCredential.enabled.is_(True),
+                MfaCredential.last_step < last_step,
+            )
+            .values(last_step=last_step)
+        )
+        self._session.commit()
+        return result.rowcount == 1

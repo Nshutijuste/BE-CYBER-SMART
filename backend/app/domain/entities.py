@@ -34,6 +34,12 @@ class RefreshTokenRecord:
 
 
 @dataclass(frozen=True)
+class RefreshTokenRotationResult:
+    record: RefreshTokenRecord | None
+    replayed: bool
+
+
+@dataclass(frozen=True)
 class MfaState:
     secret_encrypted: str
     enabled: bool
