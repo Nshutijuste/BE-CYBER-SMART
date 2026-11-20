@@ -52,5 +52,25 @@
     "title": "Never share your password, PIN or one-time code.",
     "body": "Not with anyone. Not even a bank, and not even us. The chatbot warns you if you type one."
   },
-  "footer": { "tagline": "Learn. Check. Report. Stay safe." }
+  "footer": { "tagline": "Learn. Check. Report. Stay safe." },
+  "auth": {
+    "registerTitle": "Create your account",
+    "identifier": "Email or phone number",
+    "identifierHint": "For a phone number, start with + and the country code, for example +250781234567.",
+    "password": "Password",
+    "passwordHint": "At least 12 characters. A short sentence you can remember works well.",
+    "showPassword": "Show password",
+    "createAccount": "Create account",
+    "wait": "Please wait...",
+    "success": "Your account was created. You can now log in.",
+    "errors": {
+      "password_short": "Your password needs at least 12 characters.",
+      "invalid_input": "Please check your email or phone number and try again.",
+      "account_unavailable": "These details cannot be used. Try different ones, or log in if you already have an account.",
+      "weak_password": "This password appears in known data leaks. Please choose another.",
+      "too_many_attempts": "Too many attempts. Please wait a moment and try again.",
+      "server_error": "Something went wrong on our side. Please try again.",
+      "network": "We could not reach the server. Check your connection and try again."
+    }
+  }
 }

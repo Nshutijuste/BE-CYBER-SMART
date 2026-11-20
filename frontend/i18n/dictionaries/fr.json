@@ -52,5 +52,25 @@
     "title": "Ne partagez jamais votre mot de passe, votre code PIN ou un code à usage unique.",
     "body": "Avec personne. Pas même avec une banque, ni avec nous. Le chatbot vous avertit si vous en tapez un."
   },
-  "footer": { "tagline": "Apprenez. Vérifiez. Signalez. Restez en sécurité." }
+  "footer": { "tagline": "Apprenez. Vérifiez. Signalez. Restez en sécurité." },
+  "auth": {
+    "registerTitle": "Créer votre compte",
+    "identifier": "E-mail ou numéro de téléphone",
+    "identifierHint": "Pour un numéro de téléphone, commencez par + et l'indicatif du pays, par exemple +250781234567.",
+    "password": "Mot de passe",
+    "passwordHint": "Au moins 12 caractères. Une courte phrase facile à retenir fonctionne bien.",
+    "showPassword": "Afficher le mot de passe",
+    "createAccount": "Créer le compte",
+    "wait": "Veuillez patienter...",
+    "success": "Votre compte a été créé. Vous pouvez maintenant vous connecter.",
+    "errors": {
+      "password_short": "Votre mot de passe doit contenir au moins 12 caractères.",
+      "invalid_input": "Vérifiez votre e-mail ou votre numéro de téléphone et réessayez.",
+      "account_unavailable": "Ces informations ne peuvent pas être utilisées. Essayez-en d'autres, ou connectez-vous si vous avez déjà un compte.",
+      "weak_password": "Ce mot de passe apparaît dans des fuites de données connues. Choisissez-en un autre.",
+      "too_many_attempts": "Trop de tentatives. Patientez un moment et réessayez.",
+      "server_error": "Une erreur est survenue de notre côté. Réessayez.",
+      "network": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez."
+    }
+  }
 }

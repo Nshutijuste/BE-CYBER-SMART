@@ -52,5 +52,25 @@
     "title": "Ntuzigere uha undi muntu ijambo ry'ibanga, PIN cyangwa kode y'inshuro imwe.",
     "body": "Ntawe, ndetse na banki, ndetse natwe. Chatbot iraguburira nuyandika."
   },
-  "footer": { "tagline": "Menya. Suzuma. Tanga raporo. Ugumye gutekana." }
+  "footer": { "tagline": "Menya. Suzuma. Tanga raporo. Ugumye gutekana." },
+  "auth": {
+    "registerTitle": "Fungura konti",
+    "identifier": "Imeri cyangwa nimero ya telefoni",
+    "identifierHint": "Niba ari nimero ya telefoni, tangira na + n'kode y'igihugu, urugero +250781234567.",
+    "password": "Ijambo ry'ibanga",
+    "passwordHint": "Nibura inyuguti 12. Interuro ngufi wibuka irakora neza.",
+    "showPassword": "Erekana ijambo ry'ibanga",
+    "createAccount": "Fungura konti",
+    "wait": "Tegereza...",
+    "success": "Konti yawe yafunguwe. Ubu ushobora kwinjira.",
+    "errors": {
+      "password_short": "Ijambo ry'ibanga rigomba kuba rifite nibura inyuguti 12.",
+      "invalid_input": "Ongera ugenzure imeri cyangwa nimero ya telefoni, ugerageze nanone.",
+      "account_unavailable": "Aya makuru ntashobora gukoreshwa. Gerageza andi, cyangwa winjire niba usanzwe ufite konti.",
+      "weak_password": "Iri jambo ry'ibanga rigaragara mu makuru yibwe. Hitamo irindi.",
+      "too_many_attempts": "Wagerageje inshuro nyinshi. Tegereza gato ugerageze nanone.",
+      "server_error": "Hari ikitagenze neza iwacu. Ongera ugerageze.",
+      "network": "Ntitwashoboye kugera kuri seriveri. Genzura interineti ugerageze nanone."
+    }
+  }
 }
