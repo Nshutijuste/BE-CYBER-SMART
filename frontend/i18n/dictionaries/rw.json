@@ -72,5 +72,38 @@
       "server_error": "Hari ikitagenze neza iwacu. Ongera ugerageze.",
       "network": "Ntitwashoboye kugera kuri seriveri. Genzura interineti ugerageze nanone."
     }
+  },
+  "login": {
+    "title": "Injira",
+    "navLogin": "Injira",
+    "navRegister": "Iyandikishe",
+    "identifier": "Imeri cyangwa nimero ya telefoni",
+    "password": "Ijambo ry'ibanga",
+    "showPassword": "Erekana ijambo ry'ibanga",
+    "logIn": "Injira",
+    "wait": "Tegereza...",
+    "noAccount": "Nta konti ufite?",
+    "registerLink": "Fungura imwe",
+    "codeTitle": "Shyiramo kode yawe",
+    "codeLabel": "Kode y'imibare 6 iva muri porogaramu yawe y'ubwirinzi",
+    "verify": "Emeza",
+    "retryIn": "Ongera ugerageze nyuma y'amasegonda {seconds}.",
+    "errors": {
+      "invalid_credentials": "Amakuru atari yo. Ongera ugerageze.",
+      "too_many_attempts": "Wagerageje inshuro nyinshi.",
+      "invalid_input": "Ongera ugenzure ibyo wanditse ugerageze nanone.",
+      "server_error": "Hari ikitagenze neza iwacu. Ongera ugerageze.",
+      "network": "Ntitwashoboye kugera kuri seriveri. Genzura interineti ugerageze nanone."
+    }
+  },
+  "account": {
+    "title": "Konti yawe",
+    "loading": "Biraje...",
+    "role": "Uruhare rwawe",
+    "permissions": "Ibyo wemerewe gukora",
+    "secondStep": "Intambwe ya kabiri",
+    "on": "Yemejwe",
+    "off": "Ntiyemejwe",
+    "logOut": "Sohoka"
   }
 }

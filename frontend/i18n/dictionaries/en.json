@@ -72,5 +72,38 @@
       "server_error": "Something went wrong on our side. Please try again.",
       "network": "We could not reach the server. Check your connection and try again."
     }
+  },
+  "login": {
+    "title": "Log in",
+    "navLogin": "Log in",
+    "navRegister": "Sign up",
+    "identifier": "Email or phone number",
+    "password": "Password",
+    "showPassword": "Show password",
+    "logIn": "Log in",
+    "wait": "Please wait...",
+    "noAccount": "No account yet?",
+    "registerLink": "Create one",
+    "codeTitle": "Enter your code",
+    "codeLabel": "6-digit code from your authenticator app",
+    "verify": "Verify",
+    "retryIn": "Try again in {seconds} seconds.",
+    "errors": {
+      "invalid_credentials": "Incorrect details. Please try again.",
+      "too_many_attempts": "Too many attempts.",
+      "invalid_input": "Please check what you typed and try again.",
+      "server_error": "Something went wrong on our side. Please try again.",
+      "network": "We could not reach the server. Check your connection and try again."
+    }
+  },
+  "account": {
+    "title": "Your account",
+    "loading": "Loading...",
+    "role": "Your role",
+    "permissions": "What you can do",
+    "secondStep": "Second step",
+    "on": "Verified",
+    "off": "Not verified",
+    "logOut": "Log out"
   }
 }

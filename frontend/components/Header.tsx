@@ -36,6 +36,12 @@ export default async function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          <Link href="/login" className="hidden text-lg font-semibold text-white hover:underline md:inline">
+            {t.login.navLogin}
+          </Link>
+          <Link href="/register" className="hidden rounded-lg bg-brand-lime px-4 py-2 font-bold text-brand-navy md:inline-block">
+            {t.login.navRegister}
+          </Link>
           <LanguageMenu current={locale} label={t.header.changeLanguage} />
           <MobileMenu links={links} label={t.nav.menu} />
         </div>
