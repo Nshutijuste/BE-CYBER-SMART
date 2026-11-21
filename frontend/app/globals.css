@@ -1,13 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #1f35ff;
-  --color-brand-navy: #04265b;
+  /* Digital Blue scale */
+  --color-digital-50: #e5f0ff;
+  --color-digital-100: #cce0ff;
+  --color-digital-200: #99c2ff;
+  --color-digital-300: #66a3ff;
+  --color-digital-400: #3385ff;
+  --color-digital-500: #0066ff;
+  --color-digital-600: #0052cc;
+  --color-digital-700: #003d99;
+  --color-digital-800: #002966;
+  --color-digital-900: #001433;
+  --color-digital-950: #000e24;
+
+  /* Names the components already use */
+  --color-brand-blue: #0066ff;
+  --color-brand-navy: #000e24;
+  --color-calm: #003d99;
+  --color-sky: #cce0ff;
   --color-brand-green: #078a0f;
   --color-brand-lime: #4db814;
-  --color-calm: #0a3a8f;
-  --color-sky: #cfe0ff;
+
   --animate-float: float 6s ease-in-out infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-drift: drift 18s ease-in-out infinite alternate;
+  --animate-glow: glow 5s ease-in-out infinite;
+  --animate-turn: turn 45s linear infinite;
 
   @keyframes float {
     0%,
@@ -18,11 +37,47 @@
       transform: translateY(-8px);
     }
   }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(60px, -40px, 0) scale(1.15);
+    }
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      box-shadow: 0 0 60px rgba(51, 133, 255, 0.35);
+    }
+    50% {
+      box-shadow: 0 0 110px rgba(51, 133, 255, 0.6);
+    }
+  }
+
+  @keyframes turn {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), Arial, sans-serif;
-  --font-heading: var(--font-montserrat), sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display: var(--font-montserrat), system-ui, sans-serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {

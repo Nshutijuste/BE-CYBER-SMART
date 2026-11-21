@@ -7,15 +7,16 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
   return (
     <div className="relative mx-auto aspect-square w-64 sm:w-80 lg:w-[22rem]">
       <div className="absolute inset-0 rounded-full border border-white/25" />
-      <div className="absolute inset-4 rounded-full border border-dashed border-brand-lime/70" />
+      <div className="absolute inset-4 rounded-full border border-dashed border-brand-lime/70 motion-safe:animate-turn" />
       <div
-        className="absolute inset-10 rounded-full shadow-[0_0_80px_rgba(120,170,255,0.45)]"
-        style={{ background: "radial-gradient(circle at 35% 30%, #ffffff, #cfe0ff)" }}
+        className="absolute inset-10 rounded-full shadow-[0_0_80px_rgba(51,133,255,0.45)] motion-safe:animate-glow"
+        style={{ background: "radial-gradient(circle at 35% 30%, #ffffff, #cce0ff)" }}
       />
       <Image
         src="/brand/logo-brain.png"
         alt=""
         fill
+        sizes="(min-width: 1024px) 352px, (min-width: 640px) 320px, 256px"
         className="object-contain p-[22%]"
         priority
       />
