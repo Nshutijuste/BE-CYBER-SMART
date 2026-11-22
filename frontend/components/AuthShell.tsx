@@ -14,20 +14,20 @@ export default async function AuthShell({
   const { t } = await getDictionary();
 
   return (
-    <div className="relative flex min-h-dvh flex-col overflow-hidden bg-gradient-to-b from-[#e5f0ff] via-[#edf4ff] to-[#f4f7fc] text-slate-900 dark:from-[#002966] dark:via-[#001f4d] dark:to-[#001433] dark:text-white transition-colors duration-300">
+    <div className="relative flex min-h-dvh flex-col overflow-hidden bg-[#d8e1eb] text-slate-900 dark:bg-gradient-to-b dark:from-[#002966] dark:via-[#001f4d] dark:to-[#001433] dark:text-white transition-colors duration-300">
       {/* Subtle cybernetic dot grid overlay */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(#00296615_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] opacity-75"
       />
-      {/* Ambient cosmic glow */}
+      {/* Ambient cosmic glow (dark theme only) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-1/4 size-[28rem] rounded-full bg-digital-500/15 dark:bg-brand-blue/20 blur-3xl"
+        className="hidden dark:block pointer-events-none absolute -left-32 top-1/4 size-[28rem] rounded-full bg-brand-blue/20 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 bottom-10 size-[28rem] rounded-full bg-brand-lime/15 dark:bg-brand-lime/10 blur-3xl"
+        className="hidden dark:block pointer-events-none absolute -right-32 bottom-10 size-[28rem] rounded-full bg-brand-lime/10 blur-3xl"
       />
 
       <Header />

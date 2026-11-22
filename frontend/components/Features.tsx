@@ -28,15 +28,15 @@ export default async function Features() {
   const { t } = await getDictionary();
 
   return (
-    <section id="what" className="scroll-mt-24 relative bg-[#f4f7fc] dark:bg-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
-      {/* Background ambient cosmic glow */}
+    <section id="what" className="scroll-mt-24 relative bg-[#d8e1eb] dark:bg-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
+      {/* Background ambient cosmic glow (dark theme only) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-1/4 size-[26rem] rounded-full bg-brand-blue/15 blur-3xl"
+        className="hidden dark:block pointer-events-none absolute -right-32 top-1/4 size-[26rem] rounded-full bg-brand-blue/15 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 bottom-10 size-80 rounded-full bg-brand-lime/10 blur-3xl"
+        className="hidden dark:block pointer-events-none absolute -left-32 bottom-10 size-80 rounded-full bg-brand-lime/10 blur-3xl"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">

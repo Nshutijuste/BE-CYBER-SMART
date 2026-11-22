@@ -4,11 +4,11 @@ export default async function HowItWorks() {
   const { t } = await getDictionary();
 
   return (
-    <section id="how" className="scroll-mt-24 relative bg-gradient-to-b from-[#f4f7fc] via-[#edf4ff] to-[#f4f7fc] dark:from-[#001433] dark:via-[#001f4d] dark:to-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
-      {/* Background ambient lighting */}
+    <section id="how" className="scroll-mt-24 relative bg-[#d8e1eb] dark:bg-gradient-to-b dark:from-[#001433] dark:via-[#001f4d] dark:to-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
+      {/* Background ambient lighting (dark theme only) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[36rem] rounded-full bg-brand-blue/10 blur-3xl"
+        className="hidden dark:block pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[36rem] rounded-full bg-brand-blue/10 blur-3xl"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">

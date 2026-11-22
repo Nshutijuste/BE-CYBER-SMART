@@ -21,26 +21,26 @@ export default async function Home() {
         {t.skip}
       </a>
       <Header />
-      <main className="relative bg-[#f4f7fc] text-slate-900 dark:bg-[#001433] dark:text-white overflow-hidden transition-colors duration-300">
-        <div className="relative flex min-h-dvh flex-col overflow-hidden bg-gradient-to-b from-[#e5f0ff] via-[#edf4ff] to-[#f4f7fc] dark:from-[#002966] dark:via-[#001f4d] dark:to-[#001433] text-slate-900 dark:text-white transition-colors duration-300">
+      <main className="relative bg-[#d8e1eb] text-slate-900 dark:bg-[#001433] dark:text-white overflow-hidden transition-colors duration-300">
+        <div className="relative flex min-h-dvh flex-col overflow-hidden bg-[#d8e1eb] dark:bg-gradient-to-b dark:from-[#002966] dark:via-[#001f4d] dark:to-[#001433] text-slate-900 dark:text-white transition-colors duration-300">
           {/* Subtle cybernetic dot grid overlay */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(#00296615_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] opacity-75"
           />
 
-          {/* Fluid drifting cosmic glow spheres */}
+          {/* Fluid drifting cosmic glow spheres (dark theme only for pure solid background in light mode) */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-36 top-1/4 z-0 size-[32rem] rounded-full bg-digital-500/25 blur-3xl motion-safe:animate-drift"
+            className="hidden dark:block pointer-events-none absolute -left-36 top-1/4 z-0 size-[32rem] rounded-full bg-digital-500/25 blur-3xl motion-safe:animate-drift"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-28 top-16 z-0 size-[26rem] rounded-full bg-brand-lime/15 blur-3xl motion-safe:animate-drift [animation-delay:-9s]"
+            className="hidden dark:block pointer-events-none absolute -right-28 top-16 z-0 size-[26rem] rounded-full bg-brand-lime/15 blur-3xl motion-safe:animate-drift [animation-delay:-9s]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/3 bottom-12 z-0 size-80 rounded-full bg-calm/30 blur-3xl motion-safe:animate-drift [animation-delay:-4s]"
+            className="hidden dark:block pointer-events-none absolute left-1/3 bottom-12 z-0 size-80 rounded-full bg-calm/30 blur-3xl motion-safe:animate-drift [animation-delay:-4s]"
           />
 
           <Hero />
