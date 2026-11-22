@@ -4,7 +4,7 @@ export default async function HowItWorks() {
   const { t } = await getDictionary();
 
   return (
-    <section id="how" className="relative bg-gradient-to-b from-[#f4f7fc] via-[#edf4ff] to-[#f4f7fc] dark:from-[#001433] dark:via-[#001f4d] dark:to-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
+    <section id="how" className="scroll-mt-24 relative bg-gradient-to-b from-[#f4f7fc] via-[#edf4ff] to-[#f4f7fc] dark:from-[#001433] dark:via-[#001f4d] dark:to-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
       {/* Background ambient lighting */}
       <div
         aria-hidden="true"
@@ -21,7 +21,7 @@ export default async function HowItWorks() {
               key={step.title}
               className="group relative rounded-[3px] border border-slate-200/90 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-blue/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:backdrop-blur-md dark:hover:border-brand-blue/50 dark:hover:bg-white/[0.05] dark:hover:shadow-[0_10px_30px_-5px_rgba(0,102,255,0.25)]"
             >
-              <span className="grid size-11 place-items-center rounded-[3px] bg-gradient-to-br from-brand-lime to-brand-green font-display text-lg font-black text-brand-navy shadow-[0_0_20px_rgba(77,184,20,0.45)] group-hover:scale-105 transition-transform duration-300">
+              <span className="grid size-11 place-items-center rounded-[3px] bg-[#0066ff] text-white shadow-md shadow-[#0066ff]/25 dark:bg-gradient-to-br dark:from-brand-lime dark:to-brand-green dark:text-brand-navy dark:shadow-[0_0_20px_rgba(77,184,20,0.45)] font-display text-lg font-black group-hover:scale-105 transition-transform duration-300">
                 {i + 1}
               </span>
               <h3 className="mt-5 font-display text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-blue dark:group-hover:text-brand-lime transition-colors duration-300">

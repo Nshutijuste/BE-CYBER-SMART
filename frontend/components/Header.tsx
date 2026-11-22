@@ -1,3 +1,4 @@
+import HeaderWrapper from "@/components/HeaderWrapper";
 import LanguageMenu from "@/components/LanguageMenu";
 import Logo from "@/components/Logo";
 import MobileMenu from "@/components/MobileMenu";
@@ -14,8 +15,8 @@ export default async function Header() {
   ];
 
   return (
-    <header className="absolute inset-x-0 top-0 z-30 w-full bg-transparent">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 sm:gap-8 px-6 py-6 sm:px-8">
+    <HeaderWrapper>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 sm:gap-8 px-6 sm:px-8">
         <Link
           href="/"
           aria-label="Be Cyber Smart"
@@ -54,6 +55,6 @@ export default async function Header() {
           <MobileMenu links={links} label={t.nav.menu} />
         </div>
       </div>
-    </header>
+    </HeaderWrapper>
   );
 }

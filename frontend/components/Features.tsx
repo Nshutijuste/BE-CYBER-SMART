@@ -28,7 +28,7 @@ export default async function Features() {
   const { t } = await getDictionary();
 
   return (
-    <section id="what" className="relative bg-[#f4f7fc] dark:bg-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
+    <section id="what" className="scroll-mt-24 relative bg-[#f4f7fc] dark:bg-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
       {/* Background ambient cosmic glow */}
       <div
         aria-hidden="true"
@@ -52,8 +52,8 @@ export default async function Features() {
               <div
                 className={`grid size-12 place-items-center rounded-[3px] border transition-all duration-300 group-hover:scale-105 ${
                   i % 2 === 0
-                    ? "border-brand-blue/30 bg-brand-blue/15 text-brand-blue shadow-[0_0_20px_rgba(0,102,255,0.3)] group-hover:shadow-[0_0_30px_rgba(0,102,255,0.5)]"
-                    : "border-brand-lime/30 bg-brand-lime/15 text-brand-lime shadow-[0_0_20px_rgba(77,184,20,0.3)] group-hover:shadow-[0_0_30px_rgba(77,184,20,0.5)]"
+                    ? "border-[#0066ff]/30 bg-[#0066ff]/10 text-[#0066ff] shadow-sm dark:border-brand-blue/30 dark:bg-brand-blue/15 dark:text-brand-blue dark:shadow-[0_0_20px_rgba(0,102,255,0.3)] dark:group-hover:shadow-[0_0_30px_rgba(0,102,255,0.5)]"
+                    : "border-[#0066ff]/30 bg-[#0066ff]/10 text-[#0066ff] shadow-sm dark:border-brand-lime/30 dark:bg-brand-lime/15 dark:text-brand-lime dark:shadow-[0_0_20px_rgba(77,184,20,0.3)] dark:group-hover:shadow-[0_0_30px_rgba(77,184,20,0.5)]"
                 }`}
               >
                 <svg
