@@ -12,12 +12,13 @@
   --color-digital-700: #003d99;
   --color-digital-800: #002966;
   --color-digital-900: #001433;
-  --color-digital-950: #000e24;
+  --color-digital-950: #000714;
+  --color-digital-dark: #000511;
 
   /* Names the components already use */
   --color-brand-blue: #0066ff;
-  --color-brand-navy: #000e24;
-  --color-calm: #003d99;
+  --color-brand-navy: #000714;
+  --color-calm: #002966;
   --color-sky: #cce0ff;
   --color-brand-green: #078a0f;
   --color-brand-lime: #4db814;
@@ -27,6 +28,7 @@
   --animate-drift: drift 18s ease-in-out infinite alternate;
   --animate-glow: glow 5s ease-in-out infinite;
   --animate-turn: turn 45s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
   @keyframes float {
     0%,

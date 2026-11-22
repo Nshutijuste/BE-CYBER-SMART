@@ -94,7 +94,7 @@ export default function LanguageMenu({
       {open && (
         <ul
           id="language-list"
-          className="absolute right-0 top-full z-30 mt-2 w-max overflow-hidden rounded-lg bg-white p-1 shadow-xl ring-1 ring-black/10"
+          className="absolute right-0 top-full z-30 mt-2 w-max overflow-hidden rounded-xl border border-white/15 bg-[#000e24]/95 p-1.5 shadow-2xl backdrop-blur-xl ring-1 ring-white/10"
         >
           {locales
             .filter((l) => l !== current)
@@ -105,7 +105,7 @@ export default function LanguageMenu({
                   lang={l}
                   title={names[l]}
                   onClick={() => choose(l)}
-                  className="flex w-full items-center gap-2.5 rounded-md px-3 py-2.5 text-left text-base font-semibold text-brand-navy hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-brand-blue"
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3.5 py-2 text-left text-base font-semibold text-slate-200 hover:bg-white/10 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-brand-lime"
                 >
                   <Flag locale={l} />
                   <span aria-hidden="true">{short[l]}</span>

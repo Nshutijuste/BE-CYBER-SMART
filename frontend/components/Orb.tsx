@@ -20,7 +20,8 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
           width={120}
           height={120}
           sizes="120px"
-          className="h-auto w-3/4"
+          style={{ height: "auto" }}
+          className="w-3/4"
           priority
         />
       </div>

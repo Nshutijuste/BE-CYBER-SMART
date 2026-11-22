@@ -29,7 +29,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} ${montserrat.variable}`}>
-      <body className="min-h-screen bg-white font-sans text-slate-800 antialiased">
+      <body className="min-h-screen bg-[#000714] font-sans text-slate-100 antialiased selection:bg-brand-lime selection:text-brand-navy">
         {children}
       </body>
     </html>

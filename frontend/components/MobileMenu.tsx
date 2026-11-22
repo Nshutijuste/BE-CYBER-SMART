@@ -49,7 +49,7 @@ export default function MobileMenu({
         <nav
           id="mobile-menu"
           aria-label={label}
-          className="absolute inset-x-4 top-full z-20 mt-1 rounded-2xl bg-white p-3 shadow-xl"
+          className="absolute inset-x-4 top-full z-20 mt-2 rounded-2xl border border-white/15 bg-[#000e24]/95 p-3 shadow-2xl backdrop-blur-xl"
         >
           <ul>
             {links.map((l) => (
@@ -57,7 +57,7 @@ export default function MobileMenu({
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-4 py-3 text-lg font-semibold text-brand-navy hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-brand-blue"
+                  className="block rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 hover:bg-white/10 hover:text-brand-lime transition-colors focus-visible:outline-2 focus-visible:outline-brand-lime"
                 >
                   {l.label}
                 </a>
