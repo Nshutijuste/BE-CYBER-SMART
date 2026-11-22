@@ -20,6 +20,8 @@
   },
   "what": {
     "title": "Ce que vous pouvez faire ici",
+    "seeMore": "en savoir plus",
+    "readMore": "Lire plus",
     "cards": {
       "learn": {
         "title": "Apprendre",
