@@ -6,14 +6,17 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
 
   return (
     <div className="relative mx-auto aspect-square w-64 sm:w-80 lg:w-[24rem]">
-      <div className="absolute inset-0 rounded-full border border-white/20" />
-      <div className="absolute inset-3 rounded-full border border-dashed border-brand-lime/60 motion-safe:animate-turn" />
+      {/* Outer ambient Dark Blue rings */}
+      <div className="absolute inset-0 rounded-full border border-[#004181]/30 dark:border-white/20 shadow-[0_0_40px_rgba(0,65,129,0.2)]" />
+      <div className="absolute inset-3 rounded-full border border-dashed border-[#004181]/50 dark:border-brand-lime/60 motion-safe:animate-turn" />
 
+      {/* Morphing Dark Blue liquid glass blob */}
       <div className="liquid inset-9" aria-hidden="true">
         <span className="liquid-sheen" />
       </div>
 
-      <div className="absolute inset-[30%] grid place-items-center rounded-full bg-white/85 shadow-[inset_0_0_30px_rgba(0,102,255,0.25)]">
+      {/* Frosted core with brain logo */}
+      <div className="absolute inset-[30%] grid place-items-center rounded-full bg-white/90 shadow-[inset_0_0_30px_rgba(0,65,129,0.35)] border border-[#004181]/25">
         <Image
           src="/brand/logo-brain.png"
           alt=""
@@ -27,7 +30,7 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
       </div>
 
       <div aria-hidden="true" className={`${chip} -right-3 top-8`}>
-        <span className="grid size-5 place-items-center rounded-[3px] bg-brand-green text-xs font-black text-white shadow-sm">
+        <span className="grid size-5 place-items-center rounded-[3px] bg-[#004181] text-xs font-black text-white shadow-sm">
           ✓
         </span>
         <span className="text-slate-900 dark:text-white font-bold">{safe}</span>

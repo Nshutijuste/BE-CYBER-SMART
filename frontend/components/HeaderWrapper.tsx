@@ -20,10 +20,10 @@ export default function HeaderWrapper({
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 w-full transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-40 w-full transition-all duration-300 backdrop-blur-xl border-b ${
         scrolled
-          ? "border-b border-slate-300/60 bg-[#d8e1eb]/90 py-3.5 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-[#001433]/85 sm:py-4"
-          : "border-b border-transparent bg-transparent py-5 sm:py-6"
+          ? "border-slate-300/80 bg-white/70 py-3.5 shadow-sm dark:border-white/10 dark:bg-[#001433]/85 sm:py-4"
+          : "border-white/70 bg-white/50 py-5 shadow-xs dark:border-white/10 dark:bg-[#001433]/65 sm:py-6"
       }`}
     >
       {children}
