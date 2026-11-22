@@ -28,8 +28,15 @@ export default async function RootLayout({
   const { locale } = await getDictionary();
 
   return (
-    <html lang={locale} className={`${inter.variable} ${montserrat.variable}`}>
-      <body className="min-h-screen bg-[#000714] font-sans text-slate-100 antialiased selection:bg-brand-lime selection:text-brand-navy">
+    <html lang={locale} className={`${inter.variable} ${montserrat.variable} dark`} data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');document.documentElement.dataset.theme='dark'}else{document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');document.documentElement.dataset.theme='light'}}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="min-h-screen bg-[#f4f7fc] font-sans text-slate-900 antialiased selection:bg-brand-lime selection:text-brand-navy transition-colors duration-300 dark:bg-[#000714] dark:text-slate-100">
         {children}
       </body>
     </html>

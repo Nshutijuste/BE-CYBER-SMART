@@ -17,7 +17,7 @@ export default function WaveEdge() {
       />
       <path
         d="M0 100 C 240 150, 520 150, 760 106 S 1220 30, 1440 86 L1440 160 L0 160 Z"
-        fill="#000714"
+        className="fill-[#f4f7fc] dark:fill-[#000714] transition-colors duration-300"
       />
     </svg>
   );

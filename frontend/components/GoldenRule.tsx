@@ -4,16 +4,16 @@ export default async function GoldenRule() {
   const { t } = await getDictionary();
 
   return (
-    <section id="rule" className="relative bg-[#000714] px-6 py-24 overflow-hidden">
+    <section id="rule" className="relative bg-[#f4f7fc] dark:bg-[#000714] px-6 py-24 overflow-hidden transition-colors duration-300">
       <div className="relative z-10 mx-auto max-w-4xl">
-        <div className="relative overflow-hidden rounded-[2px] border border-brand-lime/40 bg-gradient-to-br from-[#001033]/90 via-[#000d26]/90 to-[#000714]/90 p-6 sm:p-10 md:p-12 shadow-[0_0_60px_rgba(77,184,20,0.2)] backdrop-blur-2xl">
+        <div className="relative overflow-hidden rounded-[2px] border border-brand-blue/30 bg-gradient-to-br from-[#e5f0ff] via-[#dbebff] to-[#cce0ff] p-6 sm:p-10 md:p-12 shadow-lg dark:border-brand-lime/40 dark:bg-gradient-to-br dark:from-[#001033]/90 dark:via-[#000d26]/90 dark:to-[#000714]/90 dark:shadow-[0_0_60px_rgba(77,184,20,0.2)] backdrop-blur-2xl transition-all duration-300">
           {/* Subtle neon corner accent */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-20 -top-20 size-48 rounded-full bg-brand-lime/20 blur-2xl"
+            className="pointer-events-none absolute -right-20 -top-20 size-48 rounded-full bg-brand-blue/20 dark:bg-brand-lime/20 blur-2xl"
           />
 
-          <div className="inline-flex size-12 items-center justify-center rounded-[2px] border border-brand-lime/30 bg-brand-lime/10 text-brand-lime shadow-[0_0_20px_rgba(77,184,20,0.3)] mb-5">
+          <div className="inline-flex size-12 items-center justify-center rounded-[2px] border border-brand-blue/40 bg-brand-blue/15 text-brand-blue dark:border-brand-lime/30 dark:bg-brand-lime/10 dark:text-brand-lime shadow-sm dark:shadow-[0_0_20px_rgba(77,184,20,0.3)] mb-5">
             <svg
               viewBox="0 0 24 24"
               className="size-6"
@@ -29,10 +29,10 @@ export default async function GoldenRule() {
             </svg>
           </div>
 
-          <h2 className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
+          <h2 className="font-display text-2xl font-bold leading-tight text-slate-900 dark:text-white sm:text-3xl">
             {t.rule.title}
           </h2>
-          <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-200">
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200">
             {t.rule.body}
           </p>
         </div>

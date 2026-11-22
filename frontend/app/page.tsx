@@ -21,12 +21,12 @@ export default async function Home() {
         {t.skip}
       </a>
       <Header />
-      <main className="relative bg-[#000714] text-white overflow-hidden">
-        <div className="relative flex min-h-dvh flex-col overflow-hidden bg-gradient-to-b from-[#000e26] via-[#00091c] to-[#000714] text-white">
+      <main className="relative bg-[#f4f7fc] text-slate-900 dark:bg-[#000714] dark:text-white overflow-hidden transition-colors duration-300">
+        <div className="relative flex min-h-dvh flex-col overflow-hidden bg-gradient-to-b from-[#e5f0ff] via-[#edf4ff] to-[#f4f7fc] dark:from-[#000e26] dark:via-[#00091c] dark:to-[#000714] text-slate-900 dark:text-white transition-colors duration-300">
           {/* Subtle cybernetic dot grid overlay */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] opacity-75"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(#00296615_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] opacity-75"
           />
 
           {/* Fluid drifting cosmic glow spheres */}
