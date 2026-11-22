@@ -4,16 +4,16 @@ export default async function GoldenRule() {
   const { t } = await getDictionary();
 
   return (
-    <section id="rule" className="scroll-mt-24 relative bg-[#d8e1eb] dark:bg-[#001433] px-6 py-24 overflow-hidden transition-colors duration-300">
+    <section id="rule" className="scroll-mt-24 relative bg-white dark:bg-[#001433] px-6 py-24 overflow-hidden transition-colors duration-300">
       <div className="relative z-10 mx-auto max-w-4xl">
-        <div className="relative overflow-hidden rounded-[3px] border border-brand-blue/30 bg-white p-6 sm:p-10 md:p-12 shadow-lg dark:border-brand-lime/40 dark:bg-gradient-to-br dark:from-[#002966]/90 dark:via-[#001f4d]/90 dark:to-[#001433]/90 dark:shadow-[0_0_60px_rgba(77,184,20,0.2)] backdrop-blur-2xl transition-all duration-300">
+        <div className="relative overflow-hidden rounded-[3px] border border-[#004181]/30 bg-[#d8e1eb]/70 p-6 sm:p-10 md:p-12 shadow-lg dark:border-brand-lime/40 dark:bg-gradient-to-br dark:from-[#002966]/90 dark:via-[#001f4d]/90 dark:to-[#001433]/90 dark:shadow-[0_0_60px_rgba(77,184,20,0.2)] backdrop-blur-2xl transition-all duration-300">
           {/* Subtle neon corner accent (dark theme only) */}
           <div
             aria-hidden="true"
             className="hidden dark:block pointer-events-none absolute -right-20 -top-20 size-48 rounded-full dark:bg-brand-lime/20 blur-2xl"
           />
 
-          <div className="inline-flex size-12 items-center justify-center rounded-[3px] border border-brand-blue/40 bg-brand-blue/15 text-brand-blue dark:border-brand-lime/30 dark:bg-brand-lime/10 dark:text-brand-lime shadow-sm dark:shadow-[0_0_20px_rgba(77,184,20,0.3)] mb-5">
+          <div className="inline-flex size-12 items-center justify-center rounded-[3px] border border-[#004181]/40 bg-[#004181]/15 text-[#004181] dark:border-brand-lime/30 dark:bg-brand-lime/10 dark:text-brand-lime shadow-sm dark:shadow-[0_0_20px_rgba(77,184,20,0.3)] mb-5">
             <svg
               viewBox="0 0 24 24"
               className="size-6"
@@ -32,7 +32,7 @@ export default async function GoldenRule() {
           <h2 className="font-display text-3xl font-bold leading-tight text-slate-900 dark:text-white sm:text-4xl">
             {t.rule.title}
           </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-200">
+          <p className="mt-4 text-[17px] sm:text-[19px] leading-relaxed text-slate-700 dark:text-slate-200">
             {t.rule.body}
           </p>
         </div>

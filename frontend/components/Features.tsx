@@ -100,7 +100,7 @@ export default async function Features() {
   return (
     <section
       id="what"
-      className="scroll-mt-24 relative bg-[#d8e1eb] dark:bg-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300"
+      className="scroll-mt-24 relative bg-white dark:bg-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300"
     >
       {/* Background ambient cosmic glow (dark theme only) */}
       <div
@@ -123,7 +123,7 @@ export default async function Features() {
             return (
               <li
                 key={key}
-                className="group relative flex flex-col justify-between rounded-[3px] border border-slate-300/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#001433]/90 dark:shadow-none dark:hover:border-white/20"
+                className="group relative flex flex-col justify-between rounded-[3px] border border-slate-300/80 bg-[#d8e1eb]/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#001433]/90 dark:shadow-none dark:hover:border-white/20"
               >
                 <div>
                   {/* Top Graphic Banner matching the inspiration reference */}
@@ -138,7 +138,7 @@ export default async function Features() {
                       <div className="grid size-11 place-items-center rounded-[3px] border border-white/20 bg-white/10 text-white shadow-sm transition-transform duration-300 group-hover:scale-105">
                         {banner.icon}
                       </div>
-                      <span className="text-[11px] font-bold tracking-wider uppercase text-blue-100">
+                      <span className="text-[12px] font-bold tracking-wider uppercase text-blue-100">
                         {banner.tag}
                       </span>
                     </div>
@@ -147,34 +147,14 @@ export default async function Features() {
                   <h3 className="mt-5 font-display text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#004181] dark:group-hover:text-brand-lime transition-colors">
                     {t.what.cards[key].title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  <p className="mt-2 text-[15px] sm:text-[17px] leading-relaxed text-slate-600 dark:text-slate-300">
                     {t.what.cards[key].body}
                   </p>
-                </div>
-
-                {/* Card Action Button matching the inspiration reference */}
-                <div className="mt-6 pt-2">
-                  <a
-                    href={key === "check" ? "#start" : "#how"}
-                    className="inline-flex items-center justify-center rounded-[3px] bg-[#004181] hover:bg-[#002d5a] text-white px-5 py-2 text-xs font-bold uppercase tracking-wider shadow-sm transition-colors"
-                  >
-                    {t.what.seeMore}
-                  </a>
                 </div>
               </li>
             );
           })}
         </ul>
-
-        {/* Centered Read More button below cards matching the inspiration reference */}
-        <div className="mt-12 text-center">
-          <a
-            href="#how"
-            className="inline-flex min-h-11 items-center justify-center rounded-[3px] border border-slate-300 bg-white hover:bg-slate-50 text-[#004181] px-8 text-sm font-bold shadow-sm transition-colors dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-          >
-            {t.what.readMore}
-          </a>
-        </div>
       </div>
     </section>
   );

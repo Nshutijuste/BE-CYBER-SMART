@@ -30,7 +30,7 @@ export default async function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="text-base sm:text-[17px] font-medium text-slate-700 hover:text-[#0066ff] dark:text-slate-200 dark:hover:text-brand-lime transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-lime"
+              className="text-[17px] sm:text-[18px] font-medium text-slate-700 hover:text-[#004181] dark:text-slate-200 dark:hover:text-brand-lime transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-lime"
             >
               {l.label}
             </a>
@@ -40,13 +40,13 @@ export default async function Header() {
         <div className="flex items-center gap-3 sm:gap-4 shrink-0">
           <Link
             href="/login"
-            className="hidden text-base sm:text-[17px] font-semibold text-slate-700 hover:text-[#0066ff] dark:text-slate-200 dark:hover:text-white transition-colors md:inline"
+            className="hidden text-[17px] sm:text-[18px] font-semibold text-slate-700 hover:text-[#004181] dark:text-slate-200 dark:hover:text-white transition-colors md:inline"
           >
             {t.login.navLogin}
           </Link>
           <Link
             href="/register"
-            className="hidden rounded-[3px] bg-[#0066ff] hover:bg-[#0052cc] text-white px-5 py-2 text-sm sm:text-[15px] font-bold shadow-sm transition-colors md:inline-block"
+            className="hidden rounded-[3px] bg-[#004181] hover:bg-[#003466] text-white px-5 py-2 text-[15px] sm:text-[16px] font-bold shadow-sm transition-colors md:inline-block"
           >
             {t.login.navRegister}
           </Link>

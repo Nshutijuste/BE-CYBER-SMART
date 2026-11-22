@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Orb({ safe, risky }: { safe: string; risky: string }) {
   const chip =
-    "absolute flex items-center gap-2.5 rounded-[3px] border border-slate-300/80 bg-white/95 px-3.5 py-2 text-sm sm:text-base font-bold text-slate-900 shadow-xl backdrop-blur-md dark:border-white/20 dark:bg-[#001433]/95 dark:text-white motion-safe:animate-float";
+    "absolute flex items-center gap-2.5 rounded-[3px] border border-slate-300/80 bg-white/95 px-3.5 py-2 text-[15px] sm:text-[17px] font-bold text-slate-900 shadow-xl backdrop-blur-md dark:border-white/20 dark:bg-[#001433]/95 dark:text-white motion-safe:animate-float";
 
   return (
     <div className="relative mx-auto aspect-square w-64 sm:w-80 lg:w-[24rem]">

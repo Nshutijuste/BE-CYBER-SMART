@@ -47,7 +47,7 @@ export default async function AuthShell({
                 >
                   {t.login.navLogin}
                   {mode === "login" && (
-                    <span className="absolute -bottom-[21px] left-0 right-0 h-1 rounded-full bg-[#0066ff] dark:bg-brand-lime" />
+                    <span className="absolute -bottom-[21px] left-0 right-0 h-1 rounded-full bg-[#004181] dark:bg-brand-lime" />
                   )}
                 </Link>
                 <Link
@@ -60,7 +60,7 @@ export default async function AuthShell({
                 >
                   {t.login.navRegister}
                   {mode === "register" && (
-                    <span className="absolute -bottom-[21px] left-0 right-0 h-1 rounded-full bg-[#0066ff] dark:bg-brand-lime" />
+                    <span className="absolute -bottom-[21px] left-0 right-0 h-1 rounded-full bg-[#004181] dark:bg-brand-lime" />
                   )}
                 </Link>
               </div>

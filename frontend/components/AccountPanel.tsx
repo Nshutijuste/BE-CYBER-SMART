@@ -25,14 +25,14 @@ export default function AccountPanel({ text }: { text: AccountText }) {
 
   if (!me) {
     return (
-      <p role="status" className="mt-6 text-lg text-slate-600 dark:text-slate-300">
+      <p role="status" className="mt-6 text-[19px] text-slate-600 dark:text-slate-300">
         {text.loading}
       </p>
     );
   }
 
   return (
-    <div className="mt-6 space-y-5 text-base sm:text-lg text-slate-800 dark:text-slate-200">
+    <div className="mt-6 space-y-5 text-[17px] sm:text-[19px] text-slate-800 dark:text-slate-200">
       <p>
         <span className="font-semibold text-slate-900 dark:text-white">{text.role}:</span> {me.role}
       </p>
@@ -51,7 +51,7 @@ export default function AccountPanel({ text }: { text: AccountText }) {
       <button
         type="button"
         onClick={logOut}
-        className="inline-flex min-h-11 items-center rounded-[3px] border border-slate-300 bg-white hover:bg-slate-100 text-slate-900 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 px-5 text-base font-bold shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0066ff]"
+        className="inline-flex min-h-11 items-center rounded-[3px] border border-slate-300 bg-white hover:bg-slate-100 text-slate-900 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 px-5 text-[17px] font-bold shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004181]"
       >
         {text.logOut}
       </button>

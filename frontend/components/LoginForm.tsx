@@ -27,8 +27,8 @@ function messageFor(error: unknown, text: LoginText): string {
 }
 
 const inputClass =
-  "w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 placeholder-slate-400 shadow-sm transition-all focus:border-[#0066ff] focus:outline-none focus:ring-1 focus:ring-[#0066ff] dark:border-white/15 dark:bg-white/[0.05] dark:text-white dark:placeholder-slate-500 dark:focus:border-brand-lime dark:focus:ring-brand-lime";
-const labelClass = "text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5 block";
+  "w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[17px] text-slate-900 placeholder:text-[15px] placeholder-slate-400 shadow-sm transition-all focus:border-[#004181] focus:outline-none focus:ring-1 focus:ring-[#004181] dark:border-white/15 dark:bg-white/[0.05] dark:text-white dark:placeholder-slate-500 dark:focus:border-brand-lime dark:focus:ring-brand-lime";
+const labelClass = "text-[13px] sm:text-[15px] font-semibold text-slate-700 dark:text-slate-300 mb-1.5 block";
 
 export default function LoginForm({ text }: { text: LoginText }) {
   const router = useRouter();
@@ -156,7 +156,7 @@ export default function LoginForm({ text }: { text: LoginText }) {
       )}
 
       {error && (
-        <p role="alert" className="rounded-[3px] bg-rose-50 border border-rose-200 p-3.5 text-sm font-medium text-rose-700 dark:bg-rose-950/70 dark:border-rose-500/40 dark:text-rose-200">
+        <p role="alert" className="rounded-[3px] bg-rose-50 border border-rose-200 p-3.5 text-[15px] font-medium text-rose-700 dark:bg-rose-950/70 dark:border-rose-500/40 dark:text-rose-200">
           {error}
         </p>
       )}
@@ -164,17 +164,17 @@ export default function LoginForm({ text }: { text: LoginText }) {
       <button
         type="submit"
         disabled={sending}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-[3px] bg-[#0066ff] hover:bg-[#0052cc] text-white px-6 text-base font-bold shadow-md transition-colors disabled:opacity-50"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-[3px] bg-[#004181] hover:bg-[#003466] text-white px-6 text-[17px] font-bold shadow-md transition-colors disabled:opacity-50"
       >
         {sending ? text.wait : step === "password" ? text.logIn : text.verify}
       </button>
 
       <div className="pt-2">
-        <p className="text-center text-sm text-slate-600 dark:text-slate-400">
+        <p className="text-center text-[15px] text-slate-600 dark:text-slate-400">
           {text.noAccount}{" "}
           <Link
             href="/register"
-            className="font-semibold text-[#0066ff] hover:underline dark:text-brand-lime"
+            className="font-semibold text-[#004181] hover:underline dark:text-brand-lime"
           >
             {text.registerLink}
           </Link>
