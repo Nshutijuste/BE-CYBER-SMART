@@ -91,3 +91,70 @@
     font-size: 93.75%;
   }
 }
+
+/* ---------- Liquid glass blob ---------- */
+.liquid {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 58% 42% 55% 45% / 52% 58% 42% 48%;
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.95) 0%, rgba(204, 224, 255, 0.55) 18%, transparent 42%),
+    radial-gradient(circle at 78% 82%, rgba(77, 184, 20, 0.65) 0%, transparent 46%),
+    radial-gradient(circle at 50% 50%, rgba(51, 133, 255, 0.55) 0%, rgba(0, 61, 153, 0.85) 60%, rgba(0, 14, 36, 0.95) 100%);
+  box-shadow:
+    inset 14px 18px 40px rgba(255, 255, 255, 0.5),
+    inset -22px -26px 60px rgba(0, 102, 255, 0.55),
+    0 0 90px rgba(51, 133, 255, 0.5);
+}
+
+.liquid-sheen {
+  position: absolute;
+  inset: -20%;
+  background: conic-gradient(from 0deg, transparent 0 55%, rgba(255, 255, 255, 0.45) 62%, transparent 70% 100%);
+  mix-blend-mode: screen;
+  filter: blur(6px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .liquid {
+    animation:
+      liquid-morph 11s ease-in-out infinite,
+      liquid-bob 7s ease-in-out infinite;
+  }
+  .liquid-sheen {
+    animation: liquid-spin 14s linear infinite;
+  }
+}
+
+@keyframes liquid-morph {
+  0%,
+  100% {
+    border-radius: 58% 42% 55% 45% / 52% 58% 42% 48%;
+  }
+  25% {
+    border-radius: 42% 58% 45% 55% / 60% 40% 60% 40%;
+  }
+  50% {
+    border-radius: 50% 50% 38% 62% / 45% 62% 38% 55%;
+  }
+  75% {
+    border-radius: 62% 38% 52% 48% / 40% 52% 48% 60%;
+  }
+}
+
+@keyframes liquid-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(6deg);
+  }
+}
+
+@keyframes liquid-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
