@@ -40,20 +40,17 @@ export default async function Features() {
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="inline-flex items-center gap-2 rounded-[2px] border border-brand-blue/30 bg-brand-blue/10 text-brand-blue dark:border-brand-lime/30 dark:bg-brand-lime/10 dark:text-brand-lime px-3 py-1 text-xs font-bold uppercase tracking-wider mb-3">
-          Core Capabilities
-        </div>
-        <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        <h2 className="font-display text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl lg:text-[2.75rem] tracking-tight">
           {t.what.title}
         </h2>
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {ORDER.map((key, i) => (
             <li
               key={key}
-              className="group relative rounded-[2px] border border-slate-200/90 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-brand-blue/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:backdrop-blur-xl dark:hover:border-brand-lime/50 dark:hover:bg-white/[0.06] dark:hover:shadow-[0_15px_40px_-10px_rgba(77,184,20,0.25)]"
+              className="group relative rounded-[3px] border border-slate-200/90 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-brand-blue/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:backdrop-blur-xl dark:hover:border-brand-lime/50 dark:hover:bg-white/[0.06] dark:hover:shadow-[0_15px_40px_-10px_rgba(77,184,20,0.25)]"
             >
               <div
-                className={`grid size-12 place-items-center rounded-[2px] border transition-all duration-300 group-hover:scale-105 ${
+                className={`grid size-12 place-items-center rounded-[3px] border transition-all duration-300 group-hover:scale-105 ${
                   i % 2 === 0
                     ? "border-brand-blue/30 bg-brand-blue/15 text-brand-blue shadow-[0_0_20px_rgba(0,102,255,0.3)] group-hover:shadow-[0_0_30px_rgba(0,102,255,0.5)]"
                     : "border-brand-lime/30 bg-brand-lime/15 text-brand-lime shadow-[0_0_20px_rgba(77,184,20,0.3)] group-hover:shadow-[0_0_30px_rgba(77,184,20,0.5)]"
@@ -72,10 +69,10 @@ export default async function Features() {
                   {ICONS[key]}
                 </svg>
               </div>
-              <h3 className="mt-5 font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-brand-blue dark:group-hover:text-brand-lime transition-colors duration-300">
+              <h3 className="mt-5 font-display text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-brand-blue dark:group-hover:text-brand-lime transition-colors duration-300">
                 {t.what.cards[key].title}
               </h3>
-              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
                 {t.what.cards[key].body}
               </p>
             </li>

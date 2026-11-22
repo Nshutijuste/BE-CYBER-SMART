@@ -57,7 +57,7 @@ export default function ThemeToggle() {
       title={
         theme === "dark" ? "Switch to Light mode" : "Switch to Dark mode"
       }
-      className="inline-flex h-9 sm:h-10 items-center justify-center gap-1.5 rounded-[2px] border border-slate-300/80 bg-white/80 px-2.5 text-xs font-semibold text-slate-800 shadow-sm transition-colors hover:bg-white dark:border-white/20 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/15 dark:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
+      className="inline-flex h-9 sm:h-10 items-center justify-center gap-1.5 rounded-[3px] border border-slate-300/80 bg-white/80 px-2.5 text-xs font-semibold text-slate-800 shadow-sm transition-colors hover:bg-white dark:border-white/20 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/15 dark:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
     >
       {theme === "dark" ? (
         <>

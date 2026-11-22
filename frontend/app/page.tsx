@@ -16,7 +16,7 @@ export default async function Home() {
     <>
       <a
         href="#start"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-[2px] focus:bg-brand-lime focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-navy"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-[3px] focus:bg-brand-lime focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-navy"
       >
         {t.skip}
       </a>

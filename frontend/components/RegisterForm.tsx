@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { type FormEvent, useState } from "react";
 import { ApiRequestError, postJson } from "@/lib/api";
 import type en from "@/i18n/dictionaries/en.json";
@@ -15,8 +16,9 @@ function messageFor(code: string, errors: AuthText["errors"]): string {
   return code in errors ? errors[code as keyof typeof errors] : errors.server_error;
 }
 
-const input =
-  "mt-2 h-11 w-full rounded-[2px] border border-slate-300 px-4 text-base text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue";
+const inputClass =
+  "w-full rounded-[3px] border border-white/10 bg-white/[0.04] px-4 py-3 text-base text-white placeholder-slate-500 transition-all focus:border-brand-lime/80 focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-brand-lime/80";
+const labelClass = "text-xs sm:text-sm font-medium text-slate-400 mb-1.5 block";
 
 export default function RegisterForm({ text }: { text: AuthText }) {
   const [identifier, setIdentifier] = useState("");
@@ -47,58 +49,90 @@ export default function RegisterForm({ text }: { text: AuthText }) {
 
   if (done) {
     return (
-      <p role="status" className="mt-6 rounded-[2px] bg-green-50 p-4 text-base font-semibold text-brand-green">
-        {text.success}
-      </p>
+      <div className="space-y-4">
+        <p role="status" className="rounded-[3px] bg-emerald-950/70 border border-emerald-500/40 p-4 text-base font-semibold text-emerald-200">
+          {text.success}
+        </p>
+        <Link
+          href="/login"
+          className="inline-flex min-h-12 w-full items-center justify-center rounded-[3px] bg-brand-lime px-6 text-base font-bold text-brand-navy shadow-[0_0_20px_rgba(77,184,20,0.3)] transition-all hover:bg-white"
+        >
+          Sign In Now
+        </Link>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="mt-6 space-y-5" noValidate>
+    <form onSubmit={onSubmit} className="space-y-5" noValidate>
       <div>
-        <label htmlFor="identifier" className="text-lg font-semibold text-brand-navy">
+        <label htmlFor="identifier" className={labelClass}>
           {text.identifier}
         </label>
         <input
           id="identifier"
-          className={input}
+          className={inputClass}
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
+          placeholder="hey@vino.costa"
           autoComplete="username"
           autoCapitalize="none"
           spellCheck={false}
           required
         />
-        <p className="mt-1 text-sm text-slate-600">{text.identifierHint}</p>
+        <p className="mt-1.5 text-xs text-slate-400">{text.identifierHint}</p>
       </div>
 
       <div>
-        <label htmlFor="password" className="text-lg font-semibold text-brand-navy">
+        <label htmlFor="password" className={labelClass}>
           {text.password}
         </label>
-        <input
-          id="password"
-          className={input}
-          type={show ? "text" : "password"}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          autoComplete="new-password"
-          required
-        />
-        <p className="mt-1 text-sm text-slate-600">{text.passwordHint}</p>
-        <label className="mt-3 flex items-center gap-2 text-base text-slate-800">
+        <div className="relative">
           <input
-            type="checkbox"
-            checked={show}
-            onChange={(e) => setShow(e.target.checked)}
-            className="size-5"
+            id="password"
+            className={`${inputClass} pr-11`}
+            type={show ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="At least 12 symbols..."
+            autoComplete="new-password"
+            required
           />
-          {text.showPassword}
-        </label>
+          <button
+            type="button"
+            onClick={() => setShow(!show)}
+            aria-label={show ? "Hide password" : "Show password"}
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors p-1"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="size-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              {show ? (
+                <>
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </>
+              ) : (
+                <>
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
+        <p className="mt-1.5 text-xs text-slate-400">{text.passwordHint}</p>
       </div>
 
       {error && (
-        <p role="alert" className="rounded-[2px] bg-red-50 p-3 text-sm font-medium text-red-800">
+        <p role="alert" className="rounded-[3px] bg-red-950/70 border border-red-500/40 p-3 text-sm font-medium text-red-200">
           {error}
         </p>
       )}
@@ -106,10 +140,17 @@ export default function RegisterForm({ text }: { text: AuthText }) {
       <button
         type="submit"
         disabled={sending}
-        className="inline-flex min-h-11 w-full items-center justify-center rounded-[2px] bg-brand-blue px-6 text-base font-bold text-white hover:bg-brand-navy disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-[3px] bg-brand-lime px-6 text-base font-bold text-brand-navy shadow-[0_0_20px_rgba(77,184,20,0.3)] transition-all duration-300 hover:bg-white hover:text-brand-navy disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
       >
         {sending ? text.wait : text.createAccount}
       </button>
+
+      <p className="text-center text-sm text-slate-400">
+        Already have an account?{" "}
+        <Link href="/login" className="font-semibold text-brand-lime hover:underline">
+          Sign In
+        </Link>
+      </p>
     </form>
   );
 }

@@ -51,7 +51,7 @@ export default function AccountPanel({ text }: { text: AccountText }) {
       <button
         type="button"
         onClick={logOut}
-        className="inline-flex min-h-11 items-center rounded-[2px] border-2 border-brand-navy px-5 text-base font-bold text-brand-navy hover:bg-brand-navy hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+        className="inline-flex min-h-11 items-center rounded-[3px] border-2 border-brand-navy px-5 text-base font-bold text-brand-navy hover:bg-brand-navy hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
       >
         {text.logOut}
       </button>

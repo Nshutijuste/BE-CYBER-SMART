@@ -24,7 +24,7 @@ export default function ApiStatus() {
   return (
     <p
       role="status"
-      className="fixed bottom-4 left-4 z-50 flex items-center gap-2 rounded-[2px] bg-slate-900/90 border border-white/10 px-3.5 py-1.5 text-xs font-semibold text-slate-200 shadow-lg backdrop-blur-md"
+      className="fixed bottom-4 left-4 z-50 flex items-center gap-2 rounded-[3px] bg-slate-900/90 border border-white/10 px-3.5 py-1.5 text-xs font-semibold text-slate-200 shadow-lg backdrop-blur-md"
     >
       <span className={`size-2.5 rounded-full ${look.dot}`} aria-hidden="true" />
       {look.text}
