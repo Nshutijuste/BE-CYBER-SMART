@@ -19,7 +19,7 @@ export default async function HowItWorks() {
           {t.how.steps.map((step, i) => (
             <li
               key={step.title}
-              className="group relative rounded-[3px] border border-slate-200/90 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-blue/50 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:backdrop-blur-md dark:hover:border-brand-blue/50 dark:hover:bg-white/[0.05] dark:hover:shadow-[0_10px_30px_-5px_rgba(0,102,255,0.25)]"
+              className="group relative rounded-[3px] border border-slate-200/90 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-blue/50 hover:shadow-md dark:border-blue-400/25 dark:bg-[#0b2b5c]/85 dark:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),inset_0_1px_0_0_rgba(255,255,255,0.18)] dark:hover:border-blue-300/40 dark:hover:bg-[#0e3570]"
             >
               <span className="grid size-11 place-items-center rounded-[3px] bg-[#004181] text-white shadow-md shadow-[#004181]/25 dark:bg-gradient-to-br dark:from-brand-lime dark:to-brand-green dark:text-brand-navy dark:shadow-[0_0_20px_rgba(77,184,20,0.45)] font-display text-[19px] font-black group-hover:scale-105 transition-transform duration-300">
                 {i + 1}

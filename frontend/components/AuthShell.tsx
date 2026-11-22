@@ -32,7 +32,7 @@ export default async function AuthShell({
 
       <Header />
       <main className="relative z-10 flex flex-1 items-center justify-center px-4 pb-16 pt-32">
-        <div className="w-full max-w-md rounded-[3px] border border-slate-200/90 bg-white/95 text-slate-900 shadow-2xl backdrop-blur-2xl sm:p-9 dark:border-white/10 dark:bg-[#001433]/95 dark:text-white transition-colors duration-300">
+        <div className="w-full max-w-md rounded-[3px] border border-slate-200/90 bg-white/95 text-slate-900 shadow-2xl backdrop-blur-2xl sm:p-9 dark:border-blue-400/25 dark:bg-[#0b2b5c]/90 dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),inset_0_1px_0_0_rgba(255,255,255,0.18)] dark:text-white transition-colors duration-300">
           {/* Header tabs matching the reference screencast */}
           {mode ? (
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-5 mb-6">

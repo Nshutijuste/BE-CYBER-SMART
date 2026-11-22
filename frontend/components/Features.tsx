@@ -14,7 +14,7 @@ const BANNERS: Record<
 > = {
   learn: {
     tag: "Security Education",
-    gradient: "from-[#001433] via-[#00224f] to-[#003d99]",
+    gradient: "from-[#002966] via-[#004181] to-[#005bb5]",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ const BANNERS: Record<
   },
   help: {
     tag: "Incident Recovery",
-    gradient: "from-[#001f4d] via-[#002b66] to-[#0047b3]",
+    gradient: "from-[#003366] via-[#004d99] to-[#0066cc]",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -54,7 +54,7 @@ const BANNERS: Record<
   },
   check: {
     tag: "Threat Scanner",
-    gradient: "from-[#001433] via-[#002966] to-[#003d99]",
+    gradient: "from-[#002966] via-[#004181] to-[#005bb5]",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -74,7 +74,7 @@ const BANNERS: Record<
   },
   report: {
     tag: "Evidence & Directives",
-    gradient: "from-[#001f4d] via-[#002b66] to-[#0047b3]",
+    gradient: "from-[#003366] via-[#004d99] to-[#0066cc]",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -123,7 +123,7 @@ export default async function Features() {
             return (
               <li
                 key={key}
-                className="group relative flex flex-col justify-between rounded-[3px] border border-slate-300/80 bg-[#d8e1eb]/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-[#001433]/90 dark:shadow-none dark:hover:border-white/20"
+                className="group relative flex flex-col justify-between rounded-[3px] border border-slate-300/80 bg-[#d8e1eb]/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:border-blue-400/25 dark:bg-[#0b2b5c]/85 dark:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6),inset_0_1px_0_0_rgba(255,255,255,0.18)] dark:hover:border-blue-300/40 dark:hover:bg-[#0e3570]"
               >
                 <div>
                   {/* Top Graphic Banner matching the inspiration reference */}
