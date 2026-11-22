@@ -27,8 +27,8 @@ function messageFor(error: unknown, text: LoginText): string {
 }
 
 const input =
-  "mt-2 h-12 w-full rounded-lg border border-slate-300 px-4 text-lg text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue";
-const label = "text-lg font-semibold text-brand-navy";
+  "mt-2 h-11 w-full rounded-[2px] border border-slate-300 px-4 text-base text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue";
+const label = "text-base font-semibold text-brand-navy";
 
 export default function LoginForm({ text }: { text: LoginText }) {
   const router = useRouter();
@@ -132,7 +132,7 @@ export default function LoginForm({ text }: { text: LoginText }) {
       )}
 
       {error && (
-        <p role="alert" className="rounded-lg bg-red-50 p-3 text-base font-medium text-red-800">
+        <p role="alert" className="rounded-[2px] bg-red-50 p-3 text-sm font-medium text-red-800">
           {error}
         </p>
       )}
@@ -140,7 +140,7 @@ export default function LoginForm({ text }: { text: LoginText }) {
       <button
         type="submit"
         disabled={sending}
-        className="inline-flex min-h-14 w-full items-center justify-center rounded-xl bg-brand-blue px-6 text-lg font-bold text-white hover:bg-brand-navy disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+        className="inline-flex min-h-11 w-full items-center justify-center rounded-[2px] bg-brand-blue px-6 text-base font-bold text-white hover:bg-brand-navy disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
       >
         {sending ? text.wait : step === "password" ? text.logIn : text.verify}
       </button>

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Orb({ safe, risky }: { safe: string; risky: string }) {
   const chip =
-    "absolute flex items-center gap-2 rounded-xl border border-white/30 bg-white/15 px-3 py-2 text-sm font-bold text-white shadow-lg backdrop-blur-md motion-safe:animate-float";
+    "absolute flex items-center gap-2 rounded-[2px] border border-white/30 bg-white/15 px-3 py-1.5 text-xs sm:text-sm font-semibold text-white shadow-lg backdrop-blur-md motion-safe:animate-float";
 
   return (
     <div className="relative mx-auto aspect-square w-64 sm:w-80 lg:w-[24rem]">
@@ -27,7 +27,7 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
       </div>
 
       <div aria-hidden="true" className={`${chip} -right-3 top-8`}>
-        <span className="grid size-6 place-items-center rounded-full bg-brand-green text-white">
+        <span className="grid size-5 place-items-center rounded-[2px] bg-brand-green text-xs text-white">
           ✓
         </span>
         <span>{safe}</span>
@@ -36,7 +36,7 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
         aria-hidden="true"
         className={`${chip} -left-3 bottom-10 [animation-delay:-3s]`}
       >
-        <span className="grid size-6 place-items-center rounded-full bg-amber-400 text-brand-navy">
+        <span className="grid size-5 place-items-center rounded-[2px] bg-amber-400 text-xs text-brand-navy">
           !
         </span>
         <span>{risky}</span>

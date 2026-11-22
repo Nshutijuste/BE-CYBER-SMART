@@ -25,8 +25,8 @@ export default function AuthShell({
       />
 
       <Header />
-      <main className="relative z-10 flex flex-1 items-center justify-center px-4 pb-16 pt-28">
-        <div className="w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl sm:p-9 ring-1 ring-black/5">
+      <main className="relative z-10 flex flex-1 items-center justify-center px-4 pb-16 pt-32">
+        <div className="w-full max-w-md rounded-[2px] bg-white p-7 shadow-2xl sm:p-9 ring-1 ring-black/5">
           <h1 className="font-display text-3xl font-extrabold text-brand-navy">{title}</h1>
           {children}
         </div>

@@ -30,11 +30,11 @@ export default function MobileMenu({
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen(!open)}
-        className="inline-flex h-11 items-center gap-2 rounded-lg border border-white/50 px-3 text-base font-semibold text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
+        className="inline-flex h-9 sm:h-10 items-center gap-1.5 sm:gap-2 rounded-[2px] border border-white/30 bg-white/5 px-2.5 sm:px-3 text-xs sm:text-sm font-medium text-white hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
       >
         <svg
           viewBox="0 0 24 24"
-          className="size-6"
+          className="size-5"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -49,7 +49,7 @@ export default function MobileMenu({
         <nav
           id="mobile-menu"
           aria-label={label}
-          className="absolute inset-x-4 top-full z-20 mt-2 rounded-2xl border border-white/15 bg-[#000e24]/95 p-3 shadow-2xl backdrop-blur-xl"
+          className="absolute inset-x-4 top-full z-20 mt-2 rounded-[2px] border border-white/15 bg-[#000e24]/95 p-2 shadow-2xl backdrop-blur-xl"
         >
           <ul>
             {links.map((l) => (
@@ -57,7 +57,7 @@ export default function MobileMenu({
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-4 py-3 text-lg font-semibold text-slate-200 hover:bg-white/10 hover:text-brand-lime transition-colors focus-visible:outline-2 focus-visible:outline-brand-lime"
+                  className="block rounded-[2px] px-4 py-2.5 text-base font-semibold text-slate-200 hover:bg-white/10 hover:text-brand-lime transition-colors focus-visible:outline-2 focus-visible:outline-brand-lime"
                 >
                   {l.label}
                 </a>
