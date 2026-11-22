@@ -28,7 +28,7 @@ export default async function Features() {
   const { t } = await getDictionary();
 
   return (
-    <section id="what" className="relative bg-[#f4f7fc] dark:bg-[#000714] px-6 py-28 overflow-hidden transition-colors duration-300">
+    <section id="what" className="relative bg-[#f4f7fc] dark:bg-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
       {/* Background ambient cosmic glow */}
       <div
         aria-hidden="true"

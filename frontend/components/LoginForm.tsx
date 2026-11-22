@@ -27,8 +27,8 @@ function messageFor(error: unknown, text: LoginText): string {
 }
 
 const inputClass =
-  "w-full rounded-[3px] border border-white/10 bg-white/[0.04] px-4 py-3 text-base text-white placeholder-slate-500 transition-all focus:border-brand-lime/80 focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-brand-lime/80";
-const labelClass = "text-xs sm:text-sm font-medium text-slate-400 mb-1.5 block";
+  "w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 placeholder-slate-400 shadow-sm transition-all focus:border-[#0066ff] focus:outline-none focus:ring-1 focus:ring-[#0066ff] dark:border-white/15 dark:bg-white/[0.05] dark:text-white dark:placeholder-slate-500 dark:focus:border-brand-lime dark:focus:ring-brand-lime";
+const labelClass = "text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5 block";
 
 export default function LoginForm({ text }: { text: LoginText }) {
   const router = useRouter();
@@ -107,7 +107,7 @@ export default function LoginForm({ text }: { text: LoginText }) {
                 type="button"
                 onClick={() => setShow(!show)}
                 aria-label={show ? "Hide password" : "Show password"}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors p-1"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white transition-colors p-1"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -137,26 +137,26 @@ export default function LoginForm({ text }: { text: LoginText }) {
         </>
       ) : (
         <div>
-          <p className="text-xl font-bold text-white">{text.codeTitle}</p>
-          <label htmlFor="code" className={`${labelClass} mt-3`}>
+          <label htmlFor="code" className={labelClass}>
             {text.codeLabel}
           </label>
           <input
             id="code"
-            className={`${inputClass} tracking-[0.4em]`}
+            className={`${inputClass} tracking-widest text-center text-lg font-mono`}
             value={code}
-            onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+            onChange={(e) => setCode(e.target.value)}
+            placeholder="000000"
             inputMode="numeric"
             autoComplete="one-time-code"
             maxLength={6}
-            autoFocus
             required
+            autoFocus
           />
         </div>
       )}
 
       {error && (
-        <p role="alert" className="rounded-[3px] bg-red-950/70 border border-red-500/40 p-3 text-sm font-medium text-red-200">
+        <p role="alert" className="rounded-[3px] bg-rose-50 border border-rose-200 p-3.5 text-sm font-medium text-rose-700 dark:bg-rose-950/70 dark:border-rose-500/40 dark:text-rose-200">
           {error}
         </p>
       )}
@@ -164,17 +164,22 @@ export default function LoginForm({ text }: { text: LoginText }) {
       <button
         type="submit"
         disabled={sending}
-        className="inline-flex min-h-12 w-full items-center justify-center rounded-[3px] bg-brand-lime px-6 text-base font-bold text-brand-navy shadow-[0_0_20px_rgba(77,184,20,0.3)] transition-all duration-300 hover:bg-white hover:text-brand-navy disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
+        className="inline-flex min-h-12 w-full items-center justify-center rounded-[3px] bg-[#0066ff] hover:bg-[#0052cc] text-white px-6 text-base font-bold shadow-md transition-colors disabled:opacity-50"
       >
         {sending ? text.wait : step === "password" ? text.logIn : text.verify}
       </button>
 
-      <p className="text-center text-sm text-slate-400">
-        {text.noAccount}{" "}
-        <Link href="/register" className="font-semibold text-brand-lime hover:underline">
-          {text.registerLink}
-        </Link>
-      </p>
+      <div className="pt-2">
+        <p className="text-center text-sm text-slate-600 dark:text-slate-400">
+          {text.noAccount}{" "}
+          <Link
+            href="/register"
+            className="font-semibold text-[#0066ff] hover:underline dark:text-brand-lime"
+          >
+            {text.registerLink}
+          </Link>
+        </p>
+      </div>
     </form>
   );
 }

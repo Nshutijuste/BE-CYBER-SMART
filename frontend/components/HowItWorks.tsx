@@ -4,7 +4,7 @@ export default async function HowItWorks() {
   const { t } = await getDictionary();
 
   return (
-    <section id="how" className="relative bg-gradient-to-b from-[#f4f7fc] via-[#edf4ff] to-[#f4f7fc] dark:from-[#000714] dark:via-[#000d26] dark:to-[#000714] px-6 py-28 overflow-hidden transition-colors duration-300">
+    <section id="how" className="relative bg-gradient-to-b from-[#f4f7fc] via-[#edf4ff] to-[#f4f7fc] dark:from-[#001433] dark:via-[#001f4d] dark:to-[#001433] px-6 py-28 overflow-hidden transition-colors duration-300">
       {/* Background ambient lighting */}
       <div
         aria-hidden="true"

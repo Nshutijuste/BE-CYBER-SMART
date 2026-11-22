@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Orb({ safe, risky }: { safe: string; risky: string }) {
   const chip =
-    "absolute flex items-center gap-2 rounded-[3px] border border-white/30 bg-white/15 px-3 py-1.5 text-sm sm:text-base font-semibold text-white shadow-lg backdrop-blur-md motion-safe:animate-float";
+    "absolute flex items-center gap-2.5 rounded-[3px] border border-slate-300/80 bg-white/95 px-3.5 py-2 text-sm sm:text-base font-bold text-slate-900 shadow-xl backdrop-blur-md dark:border-white/20 dark:bg-[#001433]/95 dark:text-white motion-safe:animate-float";
 
   return (
     <div className="relative mx-auto aspect-square w-64 sm:w-80 lg:w-[24rem]">
@@ -27,19 +27,19 @@ export default function Orb({ safe, risky }: { safe: string; risky: string }) {
       </div>
 
       <div aria-hidden="true" className={`${chip} -right-3 top-8`}>
-        <span className="grid size-5 place-items-center rounded-[3px] bg-brand-green text-xs text-white">
+        <span className="grid size-5 place-items-center rounded-[3px] bg-brand-green text-xs font-black text-white shadow-sm">
           ✓
         </span>
-        <span>{safe}</span>
+        <span className="text-slate-900 dark:text-white font-bold">{safe}</span>
       </div>
       <div
         aria-hidden="true"
         className={`${chip} -left-3 bottom-10 [animation-delay:-3s]`}
       >
-        <span className="grid size-5 place-items-center rounded-[3px] bg-amber-400 text-xs text-brand-navy">
+        <span className="grid size-5 place-items-center rounded-[3px] bg-amber-400 text-xs font-black text-[#001433] shadow-sm">
           !
         </span>
-        <span>{risky}</span>
+        <span className="text-slate-900 dark:text-white font-bold">{risky}</span>
       </div>
     </div>
   );

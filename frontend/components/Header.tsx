@@ -8,20 +8,20 @@ import Link from "next/link";
 export default async function Header() {
   const { locale, t } = await getDictionary();
   const links = [
-    { href: "#what", label: t.nav.what },
-    { href: "#how", label: t.nav.how },
-    { href: "#rule", label: t.nav.rule },
+    { href: "/#what", label: t.nav.what },
+    { href: "/#how", label: t.nav.how },
+    { href: "/#rule", label: t.nav.rule },
   ];
 
   return (
-    <header className="fixed inset-x-0 top-4 z-40 mx-auto w-full max-w-6xl px-4 sm:px-6 pointer-events-none">
-      <div className="pointer-events-auto flex items-center justify-between gap-4 sm:gap-8 rounded-[3px] border border-slate-300/80 bg-white/85 dark:border-white/10 dark:bg-black/40 px-5 py-2.5 sm:px-6 sm:py-3 backdrop-blur-xl shadow-lg dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-colors duration-300">
+    <header className="absolute inset-x-0 top-0 z-30 w-full bg-transparent">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 sm:gap-8 px-6 py-6 sm:px-8">
         <Link
           href="/"
           aria-label="Be Cyber Smart"
           className="shrink-0 rounded-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-lime"
         >
-          <Logo size={32} />
+          <Logo size={34} />
         </Link>
 
         <nav aria-label={t.nav.menu} className="hidden items-center gap-8 lg:gap-10 md:flex">
@@ -29,23 +29,23 @@ export default async function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="text-base sm:text-[17px] font-medium text-slate-700 hover:text-brand-blue dark:text-slate-200 dark:hover:text-brand-lime transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-lime"
+              className="text-base sm:text-[17px] font-medium text-slate-700 hover:text-[#0066ff] dark:text-slate-200 dark:hover:text-brand-lime transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-lime"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
+        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
           <Link
             href="/login"
-            className="hidden text-base sm:text-[17px] font-semibold text-slate-700 hover:text-brand-blue dark:text-slate-200 dark:hover:text-white transition-colors md:inline"
+            className="hidden text-base sm:text-[17px] font-semibold text-slate-700 hover:text-[#0066ff] dark:text-slate-200 dark:hover:text-white transition-colors md:inline"
           >
             {t.login.navLogin}
           </Link>
           <Link
             href="/register"
-            className="hidden rounded-[3px] bg-brand-blue text-white shadow-sm hover:bg-brand-navy dark:bg-brand-lime dark:text-brand-navy dark:shadow-[0_0_15px_rgba(77,184,20,0.3)] dark:hover:bg-white px-4 py-1.5 text-sm sm:text-[15px] font-bold transition-all md:inline-block"
+            className="hidden rounded-[3px] bg-[#0066ff] hover:bg-[#0052cc] text-white px-5 py-2 text-sm sm:text-[15px] font-bold shadow-sm transition-colors md:inline-block"
           >
             {t.login.navRegister}
           </Link>

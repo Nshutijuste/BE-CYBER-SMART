@@ -4,9 +4,9 @@ export default async function GoldenRule() {
   const { t } = await getDictionary();
 
   return (
-    <section id="rule" className="relative bg-[#f4f7fc] dark:bg-[#000714] px-6 py-24 overflow-hidden transition-colors duration-300">
+    <section id="rule" className="relative bg-[#f4f7fc] dark:bg-[#001433] px-6 py-24 overflow-hidden transition-colors duration-300">
       <div className="relative z-10 mx-auto max-w-4xl">
-        <div className="relative overflow-hidden rounded-[3px] border border-brand-blue/30 bg-gradient-to-br from-[#e5f0ff] via-[#dbebff] to-[#cce0ff] p-6 sm:p-10 md:p-12 shadow-lg dark:border-brand-lime/40 dark:bg-gradient-to-br dark:from-[#001033]/90 dark:via-[#000d26]/90 dark:to-[#000714]/90 dark:shadow-[0_0_60px_rgba(77,184,20,0.2)] backdrop-blur-2xl transition-all duration-300">
+        <div className="relative overflow-hidden rounded-[3px] border border-brand-blue/30 bg-gradient-to-br from-[#e5f0ff] via-[#dbebff] to-[#cce0ff] p-6 sm:p-10 md:p-12 shadow-lg dark:border-brand-lime/40 dark:bg-gradient-to-br dark:from-[#002966]/90 dark:via-[#001f4d]/90 dark:to-[#001433]/90 dark:shadow-[0_0_60px_rgba(77,184,20,0.2)] backdrop-blur-2xl transition-all duration-300">
           {/* Subtle neon corner accent */}
           <div
             aria-hidden="true"

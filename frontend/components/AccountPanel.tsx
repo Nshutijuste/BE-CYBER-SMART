@@ -25,23 +25,23 @@ export default function AccountPanel({ text }: { text: AccountText }) {
 
   if (!me) {
     return (
-      <p role="status" className="mt-6 text-lg text-slate-700">
+      <p role="status" className="mt-6 text-lg text-slate-600 dark:text-slate-300">
         {text.loading}
       </p>
     );
   }
 
   return (
-    <div className="mt-6 space-y-5 text-lg text-slate-800">
+    <div className="mt-6 space-y-5 text-base sm:text-lg text-slate-800 dark:text-slate-200">
       <p>
-        <span className="font-semibold text-brand-navy">{text.role}:</span> {me.role}
+        <span className="font-semibold text-slate-900 dark:text-white">{text.role}:</span> {me.role}
       </p>
       <p>
-        <span className="font-semibold text-brand-navy">{text.secondStep}:</span>{" "}
+        <span className="font-semibold text-slate-900 dark:text-white">{text.secondStep}:</span>{" "}
         {me.mfa_verified ? text.on : text.off}
       </p>
       <div>
-        <p className="font-semibold text-brand-navy">{text.permissions}:</p>
+        <p className="font-semibold text-slate-900 dark:text-white">{text.permissions}:</p>
         <ul className="mt-2 list-disc space-y-1 pl-6">
           {me.permissions.map((permission) => (
             <li key={permission}>{permission}</li>
@@ -51,7 +51,7 @@ export default function AccountPanel({ text }: { text: AccountText }) {
       <button
         type="button"
         onClick={logOut}
-        className="inline-flex min-h-11 items-center rounded-[3px] border-2 border-brand-navy px-5 text-base font-bold text-brand-navy hover:bg-brand-navy hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue"
+        className="inline-flex min-h-11 items-center rounded-[3px] border border-slate-300 bg-white hover:bg-slate-100 text-slate-900 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 px-5 text-base font-bold shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0066ff]"
       >
         {text.logOut}
       </button>
