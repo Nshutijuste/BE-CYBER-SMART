@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Reveal({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const element = ref.current;
     if (!element) return;
     const observer = new IntersectionObserver(
@@ -16,7 +18,7 @@ export default function Reveal({ children }: { children: React.ReactNode }) {
           observer.disconnect();
         }
       },
-      { threshold: 0.05, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.05, rootMargin: "0px 0px 50px 0px" },
     );
     observer.observe(element);
     return () => observer.disconnect();
@@ -26,9 +28,9 @@ export default function Reveal({ children }: { children: React.ReactNode }) {
     <div
       ref={ref}
       className={`transition-all duration-700 ease-out ${
-        shown
+        !mounted || shown
           ? "translate-y-0 opacity-100"
-          : "motion-safe:translate-y-8 motion-safe:opacity-0"
+          : "translate-y-6 opacity-0"
       }`}
     >
       {children}

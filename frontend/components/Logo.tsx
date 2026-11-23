@@ -15,6 +15,7 @@ export default function Logo({
           alt=""
           width={size}
           height={size}
+          style={{ width: "auto", height: "auto" }}
           className="object-contain"
           priority
         />
