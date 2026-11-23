@@ -11,13 +11,9 @@ export default async function Hero() {
   return (
     <section
       id="start"
-      className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-24 xl:gap-32 px-4 pb-20 pt-24 sm:px-8 sm:pb-28 sm:pt-28 md:pb-36 md:pt-32"
+      className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-12 sm:gap-16 px-4 pb-24 pt-28 sm:px-8 lg:grid-cols-2 lg:gap-24 xl:gap-32 md:pb-36 md:pt-32"
     >
-      <div className={`${rise} order-1 lg:order-2 flex justify-center lg:justify-end [animation-delay:150ms]`}>
-        <Orb safe={t.hero.chipSafe} risky={t.hero.chipRisk} />
-      </div>
-
-      <div className="order-2 lg:order-1 max-w-xl">
+      <div className="max-w-xl">
         <h1
           className={`${rise} font-display text-3xl font-bold leading-[1.2] tracking-tight sm:text-4xl lg:text-[2.75rem] text-slate-900 dark:text-white [animation-delay:80ms]`}
         >
@@ -42,6 +38,10 @@ export default async function Hero() {
             {t.hero.scammed}
           </a>
         </div>
+      </div>
+
+      <div className={`${rise} flex justify-center lg:justify-end [animation-delay:450ms]`}>
+        <Orb safe={t.hero.chipSafe} risky={t.hero.chipRisk} />
       </div>
     </section>
   );
