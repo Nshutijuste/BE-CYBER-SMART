@@ -22,5 +22,5 @@ class AuditEntry(Base):
     details: Mapped[dict] = mapped_column(
         JSON().with_variant(JSONB(), "postgresql"), default=dict
     )
-    prev_hash: Mapped[str] = mapped_column(String(64))
+    prev_hash: Mapped[str] = mapped_column(String(64), unique=True)
     entry_hash: Mapped[str] = mapped_column(String(64), unique=True)
