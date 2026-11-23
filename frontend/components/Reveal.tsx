@@ -4,11 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Reveal({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const element = ref.current;
     if (!element) return;
     const observer = new IntersectionObserver(
@@ -28,9 +26,9 @@ export default function Reveal({ children }: { children: React.ReactNode }) {
     <div
       ref={ref}
       className={`transition-all duration-700 ease-out ${
-        !mounted || shown
+        shown
           ? "translate-y-0 opacity-100"
-          : "translate-y-6 opacity-0"
+          : "motion-safe:translate-y-6 motion-safe:opacity-0"
       }`}
     >
       {children}
