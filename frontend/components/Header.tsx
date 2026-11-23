@@ -16,13 +16,13 @@ export default async function Header() {
 
   return (
     <HeaderWrapper>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-6 px-4 sm:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-6 px-3.5 sm:px-8">
         <Link
           href="/"
           aria-label="Be Cyber Smart"
           className="shrink-0 rounded-[3px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-lime"
         >
-          <Logo size={34} />
+          <Logo size={32} />
         </Link>
 
         <nav aria-label={t.nav.menu} className="hidden items-center gap-6 lg:gap-10 md:flex">
@@ -37,7 +37,7 @@ export default async function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           <Link
             href="/login"
             className="hidden text-[17px] sm:text-[18px] font-semibold text-slate-700 hover:text-[#004181] dark:text-slate-200 dark:hover:text-white transition-colors md:inline"

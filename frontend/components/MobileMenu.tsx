@@ -34,18 +34,27 @@ export default function MobileMenu({
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen(!open)}
-        className="inline-flex h-9 sm:h-10 items-center gap-1.5 sm:gap-2 rounded-[3px] border border-slate-300/80 bg-white/80 dark:border-white/30 dark:bg-white/5 px-2.5 sm:px-3 text-xs sm:text-sm font-medium text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime"
+        className="inline-flex h-9 w-9 sm:h-10 sm:w-auto items-center justify-center sm:gap-2 rounded-[3px] border border-slate-300 bg-white dark:border-white/20 dark:bg-white/10 px-0 sm:px-3 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white shadow-xs hover:bg-slate-100 dark:hover:bg-white/20 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-lime shrink-0"
       >
         <svg
           viewBox="0 0 24 24"
-          className="size-5"
+          className="size-5 text-slate-900 dark:text-white"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="2.5"
           strokeLinecap="round"
+          strokeLinejoin="round"
           aria-hidden="true"
         >
-          {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          {open ? (
+            <path d="M6 6l12 12M18 6L6 18" />
+          ) : (
+            <>
+              <line x1="4" y1="6" x2="20" y2="6" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="18" x2="20" y2="18" />
+            </>
+          )}
         </svg>
         <span className="hidden sm:inline">{label}</span>
       </button>

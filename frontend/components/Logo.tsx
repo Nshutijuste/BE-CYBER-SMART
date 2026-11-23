@@ -8,7 +8,7 @@ export default function Logo({
   onDark?: boolean;
 }) {
   return (
-    <span className="inline-flex items-center gap-2.5 sm:gap-3">
+    <span className="inline-flex items-center gap-2 sm:gap-3">
       <span className="rounded-full bg-white p-1 shadow-sm shrink-0">
         <Image
           src="/brand/logo-brain.png"
@@ -20,7 +20,7 @@ export default function Logo({
           priority
         />
       </span>
-      <span className="font-display text-lg sm:text-xl font-extrabold leading-none tracking-tight">
+      <span className="font-display text-[17px] sm:text-xl font-extrabold leading-none tracking-tight">
         <span className="mr-0.5 align-top text-xs font-extrabold italic text-brand-green dark:text-brand-lime">
           Be
         </span>
