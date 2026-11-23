@@ -36,7 +36,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-[#d8e1eb] font-sans text-slate-900 antialiased selection:bg-brand-lime selection:text-brand-navy transition-colors duration-300 dark:bg-[#001433] dark:text-slate-100">
+      <body className="min-h-screen overflow-x-hidden bg-[#d8e1eb] font-sans text-slate-900 antialiased selection:bg-brand-lime selection:text-brand-navy transition-colors duration-300 dark:bg-[#001433] dark:text-slate-100">
         {children}
       </body>
     </html>

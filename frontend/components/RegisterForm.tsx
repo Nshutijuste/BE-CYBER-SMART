@@ -74,7 +74,7 @@ export default function RegisterForm({ text }: { text: AuthText }) {
           className={inputClass}
           value={identifier}
           onChange={(e) => setIdentifier(e.target.value)}
-          placeholder="hey@vino.costa"
+          placeholder="name@gmail.com "
           autoComplete="username"
           autoCapitalize="none"
           spellCheck={false}
@@ -94,7 +94,7 @@ export default function RegisterForm({ text }: { text: AuthText }) {
             type={show ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="At least 12 symbols..."
+            placeholder="At least 12 Characters"
             autoComplete="new-password"
             required
           />

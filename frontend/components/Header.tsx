@@ -16,7 +16,7 @@ export default async function Header() {
 
   return (
     <HeaderWrapper>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 sm:gap-8 px-6 sm:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-6 px-4 sm:px-8">
         <Link
           href="/"
           aria-label="Be Cyber Smart"
@@ -25,7 +25,7 @@ export default async function Header() {
           <Logo size={34} />
         </Link>
 
-        <nav aria-label={t.nav.menu} className="hidden items-center gap-8 lg:gap-10 md:flex">
+        <nav aria-label={t.nav.menu} className="hidden items-center gap-6 lg:gap-10 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -37,7 +37,7 @@ export default async function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <Link
             href="/login"
             className="hidden text-[17px] sm:text-[18px] font-semibold text-slate-700 hover:text-[#004181] dark:text-slate-200 dark:hover:text-white transition-colors md:inline"
@@ -52,7 +52,14 @@ export default async function Header() {
           </Link>
           <LanguageMenu current={locale} label={t.header.changeLanguage} />
           <ThemeToggle />
-          <MobileMenu links={links} label={t.nav.menu} />
+          <MobileMenu
+            links={links}
+            authLinks={[
+              { href: "/login", label: t.login.navLogin },
+              { href: "/register", label: t.login.navRegister, primary: true },
+            ]}
+            label={t.nav.menu}
+          />
         </div>
       </div>
     </HeaderWrapper>
