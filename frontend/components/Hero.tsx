@@ -27,13 +27,13 @@ export default async function Hero() {
         <div className={`${rise} mt-8 sm:mt-9 flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 [animation-delay:320ms]`}>
           <a
             href="#how"
-            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] bg-slate-800 hover:bg-slate-900 text-white shadow-md dark:bg-slate-200 dark:hover:bg-white dark:text-slate-950 dark:shadow-[0_4px_20px_rgba(255,255,255,0.15)] px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
+            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] bg-[#1e344f] hover:bg-[#15263a] text-white shadow-md dark:bg-[#b2cde3] dark:hover:bg-[#c6dcf0] dark:text-[#001433] dark:shadow-[0_4px_20px_rgba(178,205,227,0.25)] px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
           >
             {t.hero.check}
           </a>
           <a
             href="#what"
-            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] border border-slate-300 bg-white/90 hover:bg-white hover:border-slate-400 text-slate-800 shadow-sm dark:border-white/25 dark:bg-white/10 dark:text-white dark:backdrop-blur-md dark:hover:bg-white/20 dark:hover:border-white/40 px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
+            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] border border-slate-300 bg-white/90 hover:bg-white hover:border-[#1e344f]/40 text-slate-800 shadow-sm dark:border-[#b2cde3]/30 dark:bg-[#b2cde3]/10 dark:text-white dark:backdrop-blur-md dark:hover:bg-[#b2cde3]/20 dark:hover:border-[#b2cde3]/50 px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
           >
             {t.hero.scammed}
           </a>
