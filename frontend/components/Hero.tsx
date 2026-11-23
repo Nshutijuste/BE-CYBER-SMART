@@ -24,16 +24,16 @@ export default async function Hero() {
         >
           {t.hero.body}
         </p>
-        <div className={`${rise} mt-8 sm:mt-9 flex flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 [animation-delay:320ms]`}>
+        <div className={`${rise} mt-8 sm:mt-9 flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 [animation-delay:320ms]`}>
           <a
             href="#how"
-            className={`inline-flex min-h-11 sm:min-h-12 items-center justify-center rounded-[3px] bg-[#004181] hover:bg-[#003466] text-white shadow-md dark:bg-brand-blue dark:hover:bg-[#1a75ff] dark:text-white dark:shadow-[0_0_24px_rgba(0,102,255,0.45)] px-6 sm:px-7 py-2.5 sm:py-3 text-[16px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
+            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] bg-[#005bb5] hover:bg-[#004d99] text-white shadow-md dark:bg-[#0066ff] dark:hover:bg-[#1a75ff] dark:text-white dark:shadow-[0_4px_24px_rgba(0,102,255,0.4)] px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
           >
             {t.hero.check}
           </a>
           <a
             href="#what"
-            className={`inline-flex min-h-11 sm:min-h-12 items-center justify-center rounded-[3px] border border-slate-300 bg-white hover:bg-slate-50 hover:border-[#004181]/50 text-slate-800 shadow-sm dark:border-white/30 dark:bg-white/10 dark:text-white dark:backdrop-blur-md dark:hover:bg-white/20 dark:hover:border-white/50 px-6 sm:px-7 py-2.5 sm:py-3 text-[16px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
+            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] border border-slate-300 bg-white/90 hover:bg-white hover:border-[#005bb5]/50 text-slate-800 shadow-sm dark:border-white/30 dark:bg-white/10 dark:text-white dark:backdrop-blur-md dark:hover:bg-white/20 dark:hover:border-white/50 px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
           >
             {t.hero.scammed}
           </a>
