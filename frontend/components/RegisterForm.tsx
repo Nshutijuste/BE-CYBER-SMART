@@ -135,7 +135,6 @@ export default function RegisterForm({ text }: { text: AuthText }) {
             </svg>
           </button>
         </div>
-        <p className="mt-1.5 text-[13px] text-slate-500 dark:text-slate-400">{text.passwordHint}</p>
       </div>
 
       <div>
