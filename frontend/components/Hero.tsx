@@ -11,9 +11,9 @@ export default async function Hero() {
   return (
     <section
       id="start"
-      className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 pb-20 pt-28 sm:px-8 md:grid-cols-2 md:gap-16 lg:gap-24 xl:gap-32 md:pb-36 md:pt-36"
+      className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 pb-20 pt-28 sm:px-8 md:grid-cols-[1.25fr_0.75fr] lg:grid-cols-2 md:gap-10 lg:gap-20 xl:gap-28 md:pb-36 md:pt-36"
     >
-      <div className="max-w-xl text-center md:text-left mx-auto md:mx-0">
+      <div className="max-w-xl lg:max-w-2xl text-center md:text-left mx-auto md:mx-0">
         <h1
           className={`${rise} font-display text-3xl font-extrabold leading-[1.2] tracking-tight sm:text-4xl lg:text-[2.75rem] text-slate-900 dark:text-white [animation-delay:80ms]`}
         >
@@ -24,16 +24,16 @@ export default async function Hero() {
         >
           {t.hero.body}
         </p>
-        <div className={`${rise} mt-8 sm:mt-9 flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 [animation-delay:320ms]`}>
+        <div className={`${rise} mt-8 sm:mt-9 flex flex-col sm:inline-flex sm:flex-row sm:flex-nowrap items-stretch sm:items-center justify-center md:justify-start gap-3 sm:gap-4 [animation-delay:320ms]`}>
           <a
             href="#how"
-            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] bg-[#1e344f] hover:bg-[#15263a] text-white shadow-md dark:bg-[#b2cde3] dark:hover:bg-[#c6dcf0] dark:text-[#001433] dark:shadow-[0_4px_20px_rgba(178,205,227,0.25)] px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
+            className={`inline-flex min-h-12 w-full sm:w-auto shrink-0 whitespace-nowrap items-center justify-center rounded-[3px] bg-[#1e344f] hover:bg-[#15263a] text-white shadow-md dark:bg-[#b2cde3] dark:hover:bg-[#c6dcf0] dark:text-[#001433] dark:shadow-[0_4px_20px_rgba(178,205,227,0.25)] px-6 sm:px-7 py-3 text-[16px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
           >
             {t.hero.check}
           </a>
           <a
             href="#what"
-            className={`inline-flex min-h-12 w-full sm:w-auto items-center justify-center rounded-[3px] border border-slate-300 bg-white/90 hover:bg-white hover:border-[#1e344f]/40 text-slate-800 shadow-sm dark:border-[#b2cde3]/30 dark:bg-[#b2cde3]/10 dark:text-white dark:backdrop-blur-md dark:hover:bg-[#b2cde3]/20 dark:hover:border-[#b2cde3]/50 px-7 py-3 text-[17px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
+            className={`inline-flex min-h-12 w-full sm:w-auto shrink-0 whitespace-nowrap items-center justify-center rounded-[3px] border border-slate-300 bg-white/90 hover:bg-white hover:border-[#1e344f]/40 text-slate-800 shadow-sm dark:border-[#b2cde3]/30 dark:bg-[#b2cde3]/10 dark:text-white dark:backdrop-blur-md dark:hover:bg-[#b2cde3]/20 dark:hover:border-[#b2cde3]/50 px-6 sm:px-7 py-3 text-[16px] sm:text-[18px] font-bold transition-all duration-300 ${focus}`}
           >
             {t.hero.scammed}
           </a>
