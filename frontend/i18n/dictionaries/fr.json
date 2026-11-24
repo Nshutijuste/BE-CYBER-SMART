@@ -59,6 +59,8 @@
     "identifierHint": "Pour un numéro de téléphone, commencez par + et l'indicatif du pays, par exemple +250781234567.",
     "password": "Mot de passe",
     "passwordHint": "Au moins 12 caractères. Une courte phrase facile à retenir fonctionne bien.",
+    "confirmPassword": "Confirmer le mot de passe",
+    "confirmPasswordPlaceholder": "Ressaisissez votre mot de passe",
     "showPassword": "Afficher le mot de passe",
     "createAccount": "Créer le compte",
     "wait": "Veuillez patienter...",
@@ -67,6 +69,7 @@
     "success": "Votre compte a été créé. Vous pouvez maintenant vous connecter.",
     "errors": {
       "password_short": "Votre mot de passe doit contenir au moins 12 caractères.",
+      "password_mismatch": "Les mots de passe ne correspondent pas. Veuillez réessayer.",
       "invalid_input": "Vérifiez votre e-mail ou votre numéro de téléphone et réessayez.",
       "account_unavailable": "Ces informations ne peuvent pas être utilisées. Essayez-en d'autres, ou connectez-vous si vous avez déjà un compte.",
       "weak_password": "Ce mot de passe apparaît dans des fuites de données connues. Choisissez-en un autre.",

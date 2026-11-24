@@ -59,6 +59,8 @@
     "identifierHint": "For Tel: +250 ... ... ...",
     "password": "Password",
     "passwordHint": "At least 12 characters",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
     "showPassword": "Show password",
     "createAccount": "Create account",
     "wait": "Please wait...",
@@ -67,6 +69,7 @@
     "success": "Your account was created. You can now log in.",
     "errors": {
       "password_short": "Your password needs at least 12 characters.",
+      "password_mismatch": "Passwords do not match. Please make sure they match.",
       "invalid_input": "Please check your email or phone number and try again.",
       "account_unavailable": "These details cannot be used. Try different ones, or log in if you already have an account.",
       "weak_password": "This password appears in known data leaks. Please choose another.",

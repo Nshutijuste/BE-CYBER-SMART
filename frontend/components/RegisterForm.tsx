@@ -23,7 +23,9 @@ const labelClass = "text-[13px] sm:text-[15px] font-semibold text-slate-700 dark
 export default function RegisterForm({ text }: { text: AuthText }) {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [show, setShow] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,11 +37,16 @@ export default function RegisterForm({ text }: { text: AuthText }) {
       setError(text.errors.password_short);
       return;
     }
+    if (password !== confirmPassword) {
+      setError(text.errors.password_mismatch);
+      return;
+    }
     setSending(true);
     try {
       await postJson("/auth/register", { ...identifierField(identifier), password });
       setDone(true);
       setPassword("");
+      setConfirmPassword("");
     } catch (e) {
       setError(messageFor(e instanceof ApiRequestError ? e.code : "server_error", text.errors));
     } finally {
@@ -129,6 +136,53 @@ export default function RegisterForm({ text }: { text: AuthText }) {
           </button>
         </div>
         <p className="mt-1.5 text-[13px] text-slate-500 dark:text-slate-400">{text.passwordHint}</p>
+      </div>
+
+      <div>
+        <label htmlFor="confirmPassword" className={labelClass}>
+          {text.confirmPassword}
+        </label>
+        <div className="relative">
+          <input
+            id="confirmPassword"
+            className={`${inputClass} pr-11`}
+            type={showConfirm ? "text" : "password"}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder={text.confirmPasswordPlaceholder}
+            autoComplete="new-password"
+            required
+          />
+          <button
+            type="button"
+            onClick={() => setShowConfirm(!showConfirm)}
+            aria-label={showConfirm ? "Hide password" : "Show password"}
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white transition-colors p-1"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="size-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              {showConfirm ? (
+                <>
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </>
+              ) : (
+                <>
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {error && (

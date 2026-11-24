@@ -59,6 +59,8 @@
     "identifierHint": "Niba ari nimero ya telefoni, tangira na + n'kode y'igihugu, urugero +250781234567.",
     "password": "Ijambo ry'ibanga",
     "passwordHint": "Nibura inyuguti 12. Interuro ngufi wibuka irakora neza.",
+    "confirmPassword": "Emeza ijambo ry'ibanga",
+    "confirmPasswordPlaceholder": "Ongera wandike ijambo ry'ibanga",
     "showPassword": "Erekana ijambo ry'ibanga",
     "createAccount": "Fungura konti",
     "wait": "Tegereza...",
@@ -67,6 +69,7 @@
     "success": "Konti yawe yafunguwe. Ubu ushobora kwinjira.",
     "errors": {
       "password_short": "Ijambo ry'ibanga rigomba kuba rifite nibura inyuguti 12.",
+      "password_mismatch": "Amagambo y'ibanga ntabwo ahura. Ongera ugerageze.",
       "invalid_input": "Ongera ugenzure imeri cyangwa nimero ya telefoni, ugerageze nanone.",
       "account_unavailable": "Aya makuru ntashobora gukoreshwa. Gerageza andi, cyangwa winjire niba usanzwe ufite konti.",
       "weak_password": "Iri jambo ry'ibanga rigaragara mu makuru yibwe. Hitamo irindi.",
