@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
   ],
   experimental: {
     agentFeedback: true,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    agentUpgrade: "security",
   },
   async rewrites() {
     const api = process.env.API_ORIGIN ?? "http://127.0.0.1:8001";
