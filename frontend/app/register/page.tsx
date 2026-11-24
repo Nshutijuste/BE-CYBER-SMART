@@ -5,7 +5,10 @@ import { getDictionary } from "@/i18n/server";
 export default async function RegisterPage() {
   const { t } = await getDictionary();
   return (
-    <AuthShell title={t.auth.registerTitle} mode="register">
+    <AuthShell
+      title="BeCyberSmart"
+      subtitle={t.auth.registerTitle}
+    >
       <RegisterForm text={t.auth} />
     </AuthShell>
   );

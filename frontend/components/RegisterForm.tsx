@@ -147,12 +147,12 @@ export default function RegisterForm({ text }: { text: AuthText }) {
 
       <div className="pt-2">
         <p className="text-center text-[15px] text-slate-600 dark:text-slate-400">
-          Already have an account?{" "}
+          {text.alreadyAccount}{" "}
           <Link
             href="/login"
             className="font-semibold text-[#004181] hover:underline dark:text-brand-lime"
           >
-            Log in
+            {text.loginLink}
           </Link>
         </p>
       </div>

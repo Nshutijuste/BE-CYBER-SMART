@@ -62,6 +62,8 @@
     "showPassword": "Show password",
     "createAccount": "Create account",
     "wait": "Please wait...",
+    "alreadyAccount": "Already have an account?",
+    "loginLink": "Log in",
     "success": "Your account was created. You can now log in.",
     "errors": {
       "password_short": "Your password needs at least 12 characters.",

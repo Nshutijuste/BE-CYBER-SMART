@@ -62,6 +62,8 @@
     "showPassword": "Erekana ijambo ry'ibanga",
     "createAccount": "Fungura konti",
     "wait": "Tegereza...",
+    "alreadyAccount": "Ubusanzwe ufite konti?",
+    "loginLink": "Injira",
     "success": "Konti yawe yafunguwe. Ubu ushobora kwinjira.",
     "errors": {
       "password_short": "Ijambo ry'ibanga rigomba kuba rifite nibura inyuguti 12.",

@@ -62,6 +62,8 @@
     "showPassword": "Afficher le mot de passe",
     "createAccount": "Créer le compte",
     "wait": "Veuillez patienter...",
+    "alreadyAccount": "Vous avez déjà un compte ?",
+    "loginLink": "Se connecter",
     "success": "Votre compte a été créé. Vous pouvez maintenant vous connecter.",
     "errors": {
       "password_short": "Votre mot de passe doit contenir au moins 12 caractères.",
