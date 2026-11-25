@@ -20,11 +20,18 @@ from app.domain.interfaces import (
     RefreshTokenRepository,
     UserRepository,
 )
+from app.repositories.audit_repository import SqlAuditRepository
 from app.repositories.device_repository import SqlDeviceRepository
 from app.repositories.login_attempt_repository import SqlLoginAttemptRepository
 from app.repositories.mfa_repository import SqlMfaRepository
 from app.repositories.refresh_token_repository import SqlRefreshTokenRepository
 from app.repositories.user_repository import SqlUserRepository
+from app.services.audit_service import AuditService
+from app.services.audited import (
+    AuditedLoginService,
+    AuditedMfaService,
+    AuditedSessionService,
+)
 from app.services.auth_service import AuthService
 from app.services.breach_check import PwnedPasswordsChecker
 from app.services.login_service import LoginService
@@ -113,7 +120,7 @@ def get_auth_service(
     return AuthService(users, hasher, breach)
 
 
-def get_login_service(
+def build_login_service(
     users: Annotated[UserRepository, Depends(get_user_repository)],
     attempts: Annotated[LoginAttemptRepository, Depends(get_attempt_repository)],
     mfa: Annotated[MfaRepository, Depends(get_mfa_repository)],
@@ -123,7 +130,7 @@ def get_login_service(
     return LoginService(users, attempts, mfa, hasher, keyed)
 
 
-def get_session_service(
+def build_session_service(
     tokens: Annotated[TokenService, Depends(get_token_service)],
     refresh: Annotated[RefreshTokenRepository, Depends(get_refresh_repository)],
     users: Annotated[UserRepository, Depends(get_user_repository)],
@@ -137,10 +144,36 @@ def get_session_service(
     )
 
 
-def get_mfa_service(
+def build_mfa_service(
     mfa: Annotated[MfaRepository, Depends(get_mfa_repository)],
     attempts: Annotated[LoginAttemptRepository, Depends(get_attempt_repository)],
     cipher: Annotated[FieldCipher, Depends(get_field_cipher)],
     keyed: Annotated[KeyedHasher, Depends(get_keyed_hasher)],
 ) -> MfaService:
     return MfaService(mfa, attempts, cipher, keyed)
+
+
+def get_audit_service(db: DbSession) -> AuditService:
+    return AuditService(SqlAuditRepository(db))
+
+
+# The routes use these three. They are the services above, with audit entries added.
+def get_login_service(
+    inner: Annotated[LoginService, Depends(build_login_service)],
+    audit: Annotated[AuditService, Depends(get_audit_service)],
+) -> LoginService:
+    return AuditedLoginService(inner, audit)
+
+
+def get_session_service(
+    inner: Annotated[SessionService, Depends(build_session_service)],
+    audit: Annotated[AuditService, Depends(get_audit_service)],
+) -> SessionService:
+    return AuditedSessionService(inner, audit)
+
+
+def get_mfa_service(
+    inner: Annotated[MfaService, Depends(build_mfa_service)],
+    audit: Annotated[AuditService, Depends(get_audit_service)],
+) -> MfaService:
+    return AuditedMfaService(inner, audit)
