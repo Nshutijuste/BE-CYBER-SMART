@@ -43,6 +43,7 @@ class SessionService:
         *,
         refresh_days: int = 14,
         clock: Callable[[], datetime] = utc_now,
+        on_reuse: Callable[[uuid.UUID, uuid.UUID], None] | None = None,
     ) -> None:
         self._tokens = tokens
         self._refresh = refresh
@@ -52,6 +53,7 @@ class SessionService:
         self._keyed_hash = keyed_hash
         self._refresh_lifetime = timedelta(days=refresh_days)
         self._clock = clock
+        self._on_reuse = on_reuse
 
     def start(
         self,
@@ -79,6 +81,7 @@ class SessionService:
             # A spent token came back: someone copied it. End the whole family.
             self._refresh.revoke_family(record.family_id, now)
             logger.warning("refresh_token_reuse family=%s", record.family_id)
+            self._alert_reuse(record.user_id, record.family_id)
             raise InvalidSessionError()
         if record.expires_at <= now:
             raise InvalidSessionError()
@@ -98,12 +101,17 @@ class SessionService:
             raise InvalidSessionError()
         if rotation.replayed:
             logger.warning("refresh_token_reuse family=%s", rotation.record.family_id)
+            self._alert_reuse(rotation.record.user_id, rotation.record.family_id)
             raise InvalidSessionError()
         return self._issued(
             rotation.record.user_id,
             rotation.record.mfa_passed,
             replacement,
         )
+
+    def _alert_reuse(self, user_id: uuid.UUID, family_id: uuid.UUID) -> None:
+        if self._on_reuse is not None:
+            self._on_reuse(user_id, family_id)
 
     def end(self, raw_refresh_token: str) -> None:
         record = self._refresh.get_by_hash(hash_refresh_token(raw_refresh_token))

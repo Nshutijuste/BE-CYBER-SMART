@@ -31,6 +31,8 @@ from app.services.audited import (
     AuditedLoginService,
     AuditedMfaService,
     AuditedSessionService,
+    lockout_alert,
+    token_reuse_alert,
 )
 from app.services.auth_service import AuthService
 from app.services.breach_check import PwnedPasswordsChecker
@@ -120,14 +122,19 @@ def get_auth_service(
     return AuthService(users, hasher, breach)
 
 
+def get_audit_service(db: DbSession) -> AuditService:
+    return AuditService(SqlAuditRepository(db))
+
+
 def build_login_service(
     users: Annotated[UserRepository, Depends(get_user_repository)],
     attempts: Annotated[LoginAttemptRepository, Depends(get_attempt_repository)],
     mfa: Annotated[MfaRepository, Depends(get_mfa_repository)],
     hasher: Annotated[PasswordHasher, Depends(get_password_hasher)],
     keyed: Annotated[KeyedHasher, Depends(get_keyed_hasher)],
+    audit: Annotated[AuditService, Depends(get_audit_service)],
 ) -> LoginService:
-    return LoginService(users, attempts, mfa, hasher, keyed)
+    return LoginService(users, attempts, mfa, hasher, keyed, on_lockout=lockout_alert(audit))
 
 
 def build_session_service(
@@ -138,9 +145,17 @@ def build_session_service(
     notifier: Annotated[Notifier, Depends(get_notifier)],
     keyed: Annotated[KeyedHasher, Depends(get_keyed_hasher)],
     settings: Annotated[Settings, Depends(get_app_settings)],
+    audit: Annotated[AuditService, Depends(get_audit_service)],
 ) -> SessionService:
     return SessionService(
-        tokens, refresh, users, devices, notifier, keyed, refresh_days=settings.refresh_token_days
+        tokens,
+        refresh,
+        users,
+        devices,
+        notifier,
+        keyed,
+        refresh_days=settings.refresh_token_days,
+        on_reuse=token_reuse_alert(audit),
     )
 
 
@@ -151,10 +166,6 @@ def build_mfa_service(
     keyed: Annotated[KeyedHasher, Depends(get_keyed_hasher)],
 ) -> MfaService:
     return MfaService(mfa, attempts, cipher, keyed)
-
-
-def get_audit_service(db: DbSession) -> AuditService:
-    return AuditService(SqlAuditRepository(db))
 
 
 # The routes use these three. They are the services above, with audit entries added.

@@ -150,3 +150,27 @@ def test_ending_a_session_kills_its_refresh_tokens(world):
     assert refresh.active_count() == 0
     service.end("unknown-token")  # ending nothing is not an error
     assert isinstance(user_id, uuid.UUID)
+
+
+
+def test_a_spent_token_coming_back_raises_the_alarm_once():
+    refresh, users = FakeRefreshTokenRepository(), FakeUserRepository()
+    alerts = []
+    service = SessionService(
+        TokenService(SECRET),
+        refresh,
+        users,
+        FakeDeviceRepository(),
+        FakeNotifier(),
+        KeyedHasher(SECRET),
+        clock=FakeClock(),
+        on_reuse=lambda user_id, family_id: alerts.append((user_id, family_id)),
+    )
+    user_id = users.add(email="ann@example.com", phone=None, password_hash="h", role="subscriber")
+    first = service.start(user_id, mfa_passed=False, source_ip=IP, device_summary="Phone/1")
+    service.rotate(first.refresh_token)
+    assert alerts == []  # a normal refresh is not an alarm
+    with pytest.raises(InvalidSessionError):
+        service.rotate(first.refresh_token)
+    assert len(alerts) == 1
+    assert alerts[0][0] == user_id

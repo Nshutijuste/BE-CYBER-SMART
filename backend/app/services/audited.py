@@ -2,6 +2,7 @@
 
 import logging
 import uuid
+from collections.abc import Callable
 from typing import Any
 
 from app.core.errors import AuthenticationError
@@ -82,3 +83,31 @@ class AuditedMfaService(_Audited):
             self._note("mfa.failed", user_id, ip=ip)
             raise
         self._note("mfa.verified", user_id, ip=ip)
+
+
+def _safe_record(
+    audit: AuditService, action: str, actor: uuid.UUID | None, **details: Any
+) -> None:
+    try:
+        audit.record(action, actor_user_id=actor, details=details)
+    except Exception:
+        logger.exception("audit_write_failed action=%s", action)
+
+
+def lockout_alert(audit: AuditService) -> Callable[[uuid.UUID | None, str, int], None]:
+    """Called once, at the moment a lockout begins."""
+
+    def alert(user_id: uuid.UUID | None, source_ip: str, failures: int) -> None:
+        logger.warning("lockout_started ip=%s failures=%s", source_ip, failures)
+        _safe_record(audit, "login.lockout_started", user_id, ip=source_ip, failures=failures)
+
+    return alert
+
+
+def token_reuse_alert(audit: AuditService) -> Callable[[uuid.UUID, uuid.UUID], None]:
+    """Called when a spent refresh token comes back: it was probably copied."""
+
+    def alert(user_id: uuid.UUID, family_id: uuid.UUID) -> None:
+        _safe_record(audit, "session.token_reuse_detected", user_id, session_family=str(family_id))
+
+    return alert

@@ -167,3 +167,57 @@ def test_login_needs_exactly_one_identifier():
         LoginRequest(password=PASSWORD)
     with pytest.raises(ValidationError):
         LoginRequest(email="ann@example.com", phone="+250781000000", password=PASSWORD)
+
+
+
+def make_alerting_service():
+    users, attempts, hasher, clock = (
+        FakeUserRepository(),
+        FakeLoginAttemptRepository(),
+        FakePasswordHasher(),
+        FakeClock(),
+    )
+    AuthService(users, hasher, FakeBreachChecker()).register(
+        RegisterRequest(email="ann@example.com", password=PASSWORD)
+    )
+    alerts = []
+    service = LoginService(
+        users,
+        attempts,
+        FakeMfaRepository(),
+        hasher,
+        KeyedHasher("test-secret-x"),
+        clock,
+        on_lockout=lambda user_id, ip, failures: alerts.append((user_id, ip, failures)),
+    )
+    return service, users, alerts
+
+
+def test_the_lockout_alert_fires_once_when_the_fifth_failure_arrives():
+    service, users, alerts = make_alerting_service()
+    for _ in range(4):
+        wrong(service)
+    assert alerts == []
+    wrong(service)  # the 5th failure starts the lock
+    assert alerts == [(users.rows[0]["id"], IP, 5)]
+    for _ in range(3):  # knocking while locked does not raise it again
+        with pytest.raises(TooManyAttemptsError):
+            login(service, email="ann@example.com")
+    assert len(alerts) == 1
+
+
+def test_the_lockout_alert_also_fires_for_an_invented_account_without_a_person():
+    service, _, alerts = make_alerting_service()
+    for _ in range(5):
+        wrong(service, email="nobody@example.com")
+    assert alerts == [(None, IP, 5)]
+
+
+def test_a_success_in_between_means_no_alert():
+    service, _, alerts = make_alerting_service()
+    for _ in range(4):
+        wrong(service)
+    assert login(service, email="ann@example.com")
+    for _ in range(4):
+        wrong(service)
+    assert alerts == []

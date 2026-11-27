@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 
 from app.core.errors import AuthenticationError, TooManyAttemptsError
+from app.domain.entities import COUNTED_FAILURES
 from app.domain.interfaces import (
     LoginAttemptRepository,
     MfaRepository,
@@ -11,7 +12,7 @@ from app.domain.interfaces import (
     UserRepository,
 )
 from app.schemas.auth import LoginRequest
-from app.services.throttle import Throttle
+from app.services.throttle import FREE_FAILURES, WINDOW, Throttle
 
 UNKNOWN_ACCOUNT = "unknown_account"
 WRONG_PASSWORD = "wrong_password"
@@ -38,6 +39,7 @@ class LoginService:
         hasher: PasswordHasher,
         keyed_hash: Callable[[str], str],
         clock: Callable[[], datetime] = utc_now,
+        on_lockout: Callable[[uuid.UUID | None, str, int], None] | None = None,
     ) -> None:
         self._users = users
         self._attempts = attempts
@@ -46,6 +48,7 @@ class LoginService:
         self._keyed_hash = keyed_hash
         self._clock = clock
         self._throttle = Throttle(attempts)
+        self._on_lockout = on_lockout
 
     def login(
         self,
@@ -80,6 +83,10 @@ class LoginService:
                 failure = INACTIVE_ACCOUNT
 
         self._record(user_id, key, source_ip, device_summary, failure, now)
+        if failure in COUNTED_FAILURES and self._on_lockout is not None:
+            window = self._attempts.failure_window(key, now - WINDOW)
+            if window.count == FREE_FAILURES:  # this failure is the one that starts the lock
+                self._on_lockout(user_id, source_ip, window.count)
         if failure is not None or user_id is None:
             # One identical error for every failure. The reason stays in our records.
             raise AuthenticationError()
